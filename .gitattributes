@@ -1,5 +1,7 @@
 # Frozen experiment manifests hash exact file bytes. Do not convert line endings.
-* -text
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Existing Markdown uses intentional hard line breaks and preserved blank lines.
+*.md whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 *.png binary
 *.pptx binary
 *.pt binary
