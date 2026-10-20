@@ -1,0 +1,29 @@
+{
+  "protocol_id": "paderborn_binary_bearing_disjoint_v1",
+  "classes": ["healthy", "faulty"],
+  "source_condition": "N15_M07_F10",
+  "target_conditions": ["N09_M07_F10", "N15_M01_F10", "N15_M07_F04"],
+  "bearing_groups": {
+    "source_fit": ["K001", "K002", "K003", "KA01", "KA03", "KA04", "KA05", "KA06", "KA07", "KI01", "KI03", "KI04", "KI05", "KI07", "KB23"],
+    "source_validation": ["K004", "KA08", "KA15", "KI08", "KI14"],
+    "target_adaptation": ["K005", "KA09", "KA16", "KI16", "KI17", "KB24"],
+    "evaluation": ["K006", "KA22", "KA30", "KI18", "KI21", "KB27"]
+  },
+  "nominal_raw_fs_hz": 64000,
+  "processed_fs_hz": 16000,
+  "window_length": 2048,
+  "stride": 2048,
+  "processed_edge_trim_samples": 128,
+  "normalization": "per_window_z_score",
+  "invalid_recording_policy": "exclude unreadable or invalid signals, log exact path and error; fail if over 5 percent",
+  "seeds": [7, 17, 27],
+  "source_epochs": 20,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "weight_decay": 0.00001,
+  "source_selection": "highest source-validation recording-level macro F1; earliest tie",
+  "decision_threshold_fault_probability": 0.5,
+  "recording_aggregation": "mean window softmax probabilities",
+  "target_labels_used_for_training_or_selection": false,
+  "adaptation_implemented_in_this_stage": false
+}

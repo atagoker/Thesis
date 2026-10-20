@@ -1,0 +1,7 @@
+# Frozen experiment manifests hash exact file bytes. Do not convert line endings.
+* -text
+*.png binary
+*.pptx binary
+*.pt binary
+*.npz binary
+*.zip binary
