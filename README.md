@@ -11,6 +11,11 @@ Repository: [atagoker/Thesis](https://github.com/atagoker/Thesis), default branc
   this repository. Large original datasets and the Python environment are not.
 - [Thesis progress](reports/THESIS_PROGRESS.md) distinguishes completed work from
   remaining research; percentages of the entire thesis are not asserted.
+- [English thesis draft](thesis/THESIS_DRAFT.md) contains the introduction,
+  literature, data protocol, methods, implementation, measured results and discussion.
+- [New commissioning results](reports/PADERBORN_COMMISSIONING_RESULTS.md) compare
+  all four methods; [Turkish milestone guide](reports/COMMISSIONING_MILESTONE_TR.md)
+  explains what was completed and how to demonstrate it.
 - [Detailed English research companion](docs/research/THESIS_RESEARCH_COMPANION_EN_2026-09-06.md)
   and [master guide](THESIS_MASTER_GUIDE.md) explain the background and plan.
 - [Initial student-supplied presentation](docs/presentations/initial_thesis_presentation.pptx)
@@ -39,13 +44,34 @@ Public availability does not grant a blanket source/data license. No project-wid
 source-code license has been selected. Dataset and referenced-code rights remain
 with their respective publishers; see [data and evidence notes](results/README.md).
 
-## New: Paderborn baseline
+## New: Paderborn teacher-student commissioning
 
 The downloaded 32-bearing collection is now connected to a **binary healthy/faulty,
 bearing-disjoint source-only baseline**. All original recordings were audited;
 one unreadable MATLAB file outside the selected partitions is documented.
-Three GPU training seeds and a separate frozen-checkpoint evaluation are complete.
-Paderborn teacher-student adaptation is **not yet implemented**.
+The baseline and a separate teacher-student commissioning study are complete.
+The new study compares initial source-only, continued-source, source-only EMA and
+target-adapted EMA teachers over three seeds and three target conditions. All
+source update sequences are matched; target reference labels are accessed only
+by the separate evaluator after model freezing. Exact local replay and 23 tests
+pass. The experiment is exploratory because baseline test results were already
+known before this extension was designed.
+
+Mean target recording macro F1 is **56.34% initial source, 65.42% continued
+source, 66.84% source EMA, 66.38% teacher-student**. Unlabeled-target learning
+does not demonstrate an average benefit beyond source EMA in this protocol.
+Under reduced radial force, accepted pseudo-label precision is only 20.29–28.15%
+in the final epoch despite high confidence. Read the
+[new protocol](reports/PADERBORN_COMMISSIONING_PROTOCOL_V1.md) and
+[measured report](reports/PADERBORN_COMMISSIONING_RESULTS.md) for every run and limitation.
+
+After restoring published artifacts and preparing the original data:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\evaluate_paderborn_commissioning.py
+.\.venv\Scripts\python.exe scripts\analyze_paderborn_commissioning.py
+.\.venv\Scripts\python.exe scripts\verify_commissioning_evidence.py
+```
 
 Start with [the beginner run guide](reports/PADERBORN_START_HERE.md),
 [measured results](reports/PADERBORN_BASELINE_RESULTS.md), and
@@ -54,7 +80,7 @@ is separate and remains unchanged in scope.
 
 The project now includes real CWRU data preparation, source training, custom EMA teacher–student commissioning, separate evaluation, and a command-line predictor. Read [the measured pilot report](reports/PILOT_RESULTS.md) first, then [the implemented protocol](reports/EXPERIMENT_PROTOCOL_PILOT_V1.md).
 
-## Current scientific result
+## Earlier CWRU scientific result
 
 The pilot evaluates four classes, three training seeds, and source load 0 to target loads 1, 2, and 3 hp. Teacher–student improves mean macro F1 over the initial source-only model, but does not outperform matched extra-source and source-only EMA controls. This is an initial finding, not evidence of general adaptation superiority.
 
@@ -75,7 +101,10 @@ Select `.venv\Scripts\python.exe` as the interpreter. See [START_HERE.md](START_
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Figures are in `outputs/pilot_v1/figures/`. Original data and model artifacts are intentionally ignored by Git. The small provenance and window manifests are in `data/manifests/`.
+Figures are in each experiment's `outputs/.../figures/` and published under
+`results/`. Raw data and runtime outputs are ignored by Git; selected small
+checkpoint/report snapshots are included under `results/`. Provenance and window
+manifests are in `data/manifests/`.
 
 ## Reproduce the pipeline from a fresh project copy
 
@@ -135,4 +164,6 @@ reports/                   readable method, results, learning notes
 external/CAT/              original reference code (ignored)
 ```
 
-The next step is understanding the implemented pipeline, then selecting a stronger evaluation or method extension with the supervisor. Slides are deferred until requested.
+The next step is reviewing the English thesis draft and measured failure cases,
+then agreeing a stronger confirmation/ablation study with the supervisor. Slides
+remain deferred until requested.
