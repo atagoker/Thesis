@@ -1,0 +1,31 @@
+{
+  "checkpoints": [
+    {
+      "checkpoint": "seed_7/N09_M07_F10/student_diagnostic.pt",
+      "exact_tensor_match": true,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "checkpoint": "seed_7/N09_M07_F10/teacher_student.pt",
+      "exact_tensor_match": true,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "checkpoint": "seed_7/source_control/continued_source.pt",
+      "exact_tensor_match": true,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "checkpoint": "seed_7/source_control/source_ema.pt",
+      "exact_tensor_match": true,
+      "max_absolute_difference": 0.0
+    }
+  ],
+  "pseudo_traces_exact": true,
+  "histories_exact": true,
+  "all_passed": true,
+  "scope": "Same installed software, GPU, inputs and configuration; not a cross-device guarantee.",
+  "target_reference_labels_access_blocked": true,
+  "seed": 7,
+  "condition": "N09_M07_F10"
+}

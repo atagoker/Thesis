@@ -8,7 +8,13 @@ requiring the multi-gigabyte raw datasets or a Python environment.
   figures, model checkpoints, and frozen execution evidence.
 - `paderborn_baseline_v1/`: binary healthy/faulty source-only models for three
   seeds, bearing-disjoint evaluation, per-bearing results, figures and replay
-  evidence. Paderborn teacher-student adaptation is not implemented yet.
+  evidence. This original baseline is preserved unchanged.
+- `paderborn_commissioning_v1/`: the separate teacher-student extension, with
+  matched continued-source and source-EMA controls, nine target adaptations,
+  24 new checkpoints (including diagnostic students), all-seed evaluation,
+  actual pseudo-label exposure traces, six figures, exact replay and verification.
+  The teacher's mean recording macro F1 is 66.38% versus 66.84% for source EMA;
+  this exploratory version does not demonstrate aggregate target-learning benefit.
 - `paderborn_demo/`: healthy/faulty command-line demonstration reports.
 - `paderborn/`: initial archive-import inspection.
 - `setup/`: synthetic software/GPU check; not a fault-detection result.

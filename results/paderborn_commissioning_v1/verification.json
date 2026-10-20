@@ -1,0 +1,25 @@
+{
+  "verified_utc": "2026-10-20T03:17:07.046786+00:00",
+  "verification_script_sha256": "17f23c2db51dd9035e881863eaa24aa1a5b39c846bda1013c32353b013ee9504",
+  "training_artifact_hashes_verified": true,
+  "original_baseline_metric_rows_matched": 36,
+  "primary_method_task_seed_rows": 36,
+  "total_result_rows": 144,
+  "source_update_budget_per_run": [
+    730
+  ],
+  "all_source_sequences_matched": true,
+  "exact_replay_passed": true,
+  "real_evaluator_open_blocked": true,
+  "pseudo_trace_epochs_reconciled": 90,
+  "tests_run": 23,
+  "failures": 0,
+  "errors": 0,
+  "tests_passed": true,
+  "test_output": "test_guard_allows_only_selected_unlabeled_target_and_source (test_commissioning.CommissioningChecks.test_guard_allows_only_selected_unlabeled_target_and_source) ... ok\ntest_imbalanced_all_faulty_classifier_cannot_pass_balanced_metrics (test_commissioning.CommissioningChecks.test_imbalanced_all_faulty_classifier_cannot_pass_balanced_metrics) ... ok\ntest_masked_loss_full_denominator_and_empty_mask_gradients (test_commissioning.CommissioningChecks.test_masked_loss_full_denominator_and_empty_mask_gradients) ... ok\ntest_posthoc_trace_counts_repeated_exposures_and_empty_acceptance (test_commissioning.CommissioningChecks.test_posthoc_trace_counts_repeated_exposures_and_empty_acceptance) ... ok\ntest_source_order_does_not_depend_on_global_or_augmentation_rng (test_commissioning.CommissioningChecks.test_source_order_does_not_depend_on_global_or_augmentation_rng) ... ok\ntest_target_schema_rejects_labels_even_when_hash_is_valid (test_commissioning.CommissioningChecks.test_target_schema_rejects_labels_even_when_hash_is_valid) ... ok\ntest_teacher_is_independent_frozen_and_ema_follows_updated_student (test_commissioning.CommissioningChecks.test_teacher_is_independent_frozen_and_ema_follows_updated_student) ... ok\ntest_zero_target_weight_reproduces_both_source_control_networks (test_commissioning.CommissioningChecks.test_zero_target_weight_reproduces_both_source_control_networks) ... ok\ntest_all_bearings_partitioned_without_overlap (test_paderborn.PaderbornChecks.test_all_bearings_partitioned_without_overlap) ... ok\ntest_binary_head_preserves_four_class_default (test_paderborn.PaderbornChecks.test_binary_head_preserves_four_class_default) ... ok\ntest_combined_faults_are_not_mislabeled_healthy (test_paderborn.PaderbornChecks.test_combined_faults_are_not_mislabeled_healthy) ... ok\ntest_overlap_is_rejected (test_paderborn.PaderbornChecks.test_overlap_is_rejected) ... ok\ntest_real_signal_and_nonoverlapping_windows (test_paderborn.PaderbornChecks.test_real_signal_and_nonoverlapping_windows) ... ok\ntest_recording_aggregation_does_not_depend_on_window_order (test_paderborn.PaderbornChecks.test_recording_aggregation_does_not_depend_on_window_order) ... ok\ntest_recordings_never_cross_bearing_groups (test_paderborn.PaderbornChecks.test_recordings_never_cross_bearing_groups) ... ok\ntest_target_and_test_archives_do_not_contain_labels (test_paderborn.PaderbornChecks.test_target_and_test_archives_do_not_contain_labels) ... ok\ntest_training_guard_denies_target_and_evaluator_reads (test_paderborn.PaderbornChecks.test_training_guard_denies_target_and_evaluator_reads) ... ok\ntest_constant_signal_normalization_is_finite (test_pilot.MethodChecks.test_constant_signal_normalization_is_finite) ... ok\ntest_empty_confidence_mask_is_finite_zero_with_gradients (test_pilot.MethodChecks.test_empty_confidence_mask_is_finite_zero_with_gradients) ... ok\ntest_only_accepted_pseudo_labels_supply_gradients (test_pilot.MethodChecks.test_only_accepted_pseudo_labels_supply_gradients) ... ok\ntest_raw_intervals_and_filter_regions_do_not_cross_splits (test_pilot.MethodChecks.test_raw_intervals_and_filter_regions_do_not_cross_splits) ... ok\ntest_target_training_archives_have_no_labels (test_pilot.MethodChecks.test_target_training_archives_have_no_labels) ... ok\ntest_teacher_is_independent_and_follows_ema (test_pilot.MethodChecks.test_teacher_is_independent_and_follows_ema) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 2.968s\n\nOK\n",
+  "test_file_sha256": {
+    "tests/test_commissioning.py": "f78a15d6c53f407474f30dcd91d5767fb67a04dbec8a685b502b54db4c447ff4",
+    "tests/test_paderborn.py": "db7efde40821da143c83c612f5303dd40359dc2702b376faf338ac058521f6fc",
+    "tests/test_pilot.py": "7a62c9c1f59784460aad30c7e5854064f79bddcb328da858d4b9380a1f9a9473"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "started_utc": "2026-10-20T02:53:58.074693+00:00",
+  "protocol_id": "paderborn_teacher_student_commissioning_v1",
+  "config_sha256": "f9bbe01dd561d9e0093a0634186026af881bbe7fc15754d4980d28fd8bfabbdf",
+  "protocol_sha256": "e7dc9d0dbd97863995fa28d69b9dc42e38e001ed7a93b3c119eeaffe399381d2",
+  "implementation_sha256": {
+    "thesislib/commissioning.py": "3ae87330a3ec305ba17806312cd4955201916e3a0c8eed60541fb8fae75686f9",
+    "thesislib/common.py": "d44ac831820604eaf605df42c56563c4fcbf87dc9e7f9f7167c13910b5904194",
+    "thesislib/paderborn_ml.py": "5adce1f02f1ee9bd91a2d55788b479747c77227db12f8653c7f453e997dfdb46",
+    "scripts/train_paderborn_commissioning.py": "80ffaab4d49620d8585723cd7f3ca0d935be5fb40ee43227ba54966bb2f66a71"
+  },
+  "prepared_summary_sha256": "2fe70ef84d550eb159ff440512baa905a29ee2d3ba5a78adc1ad9086b68eca6a",
+  "baseline_completion_sha256": "279e30211e96d21bfad06f361a1794b8d27a4fcf12803d160a12f120aa5f80f3",
+  "target_labels_used_for_training_or_selection": false,
+  "baseline_test_results_previously_inspected": true,
+  "experiment_design": "exploratory; fixed adaptation settings before this run",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "torch": "2.13.0+cu126",
+  "numpy": "2.5.4",
+  "cuda_runtime": "12.6",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "replay": false
+}

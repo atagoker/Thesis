@@ -1,0 +1,33 @@
+{
+  "input_file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K006\\N09_M07_F10_K006_1.mat",
+  "input_sha256": "04e95745d8e71a23ba60c96bd57b9fa69278d40f0beb439f86c68ec7328bd4d0",
+  "checkpoint": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\outputs\\paderborn_commissioning_v1\\seed_7\\N09_M07_F10\\teacher_student.pt",
+  "checkpoint_sha256": "a88475126da92baa3c69e6540cf83063f8ad0f80f8d88909d05dff0b5344f37d",
+  "model_role": "paderborn_binary_teacher_student",
+  "adaptation_target_condition": "N09_M07_F10",
+  "device": "cuda",
+  "vibration_channel": "vibration_1",
+  "window_count": 31,
+  "predicted_class": "healthy",
+  "mean_probabilities": {
+    "healthy": 0.9951474070549011,
+    "faulty": 0.0048526376485824585
+  },
+  "window_prediction_counts": {
+    "healthy": 31,
+    "faulty": 0
+  },
+  "input_quality": {
+    "samples": 256085,
+    "rms_recorded_units": 0.35959342897620244,
+    "std_recorded_units": 0.3593238935080092,
+    "embedded_time_span": 3.999997861355071,
+    "embedded_axis_mean_rate_if_seconds": 64021.034229565055,
+    "embedded_axis_rate_relative_difference_from_nominal": 0.00032865983695407053,
+    "nominal_fs_hz": 64000,
+    "nominal_duration_s": 4.001328125,
+    "sampling_rate_policy": "published nominal 64 kHz; embedded timing diagnostic only"
+  },
+  "threshold": 0.5,
+  "warning": "Prototype score, not a calibrated failure probability. No unknown-fault rejection. Running a known test recording is a demonstration, not a new independent validation."
+}
