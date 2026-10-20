@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "seed": 7,
+  "target_load_hp": 1,
+  "evaluator_label_access": "blocked by Python audit hook during replay",
+  "training_facing_data_paths_opened": [
+    "c:/users/tuf gaming/documents/thesis/data/processed/pilot_v1/load1_fit_unlabeled.npz"
+  ],
+  "max_abs_teacher_parameter_difference": 0.0,
+  "scope": "Exact replay on this software/hardware; does not guarantee cross-device determinism"
+}

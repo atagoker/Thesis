@@ -1,0 +1,136 @@
+{
+  "completed_utc": "2026-10-18T22:31:32.239339+00:00",
+  "config_sha256": "0791c9efc55fc2d94d8ee23a2347a839963a84b93005896d26c300584e63c1d5",
+  "runs": [
+    {
+      "best_source_epoch": 30,
+      "best_source_validation_macro_f1": 0.9319833575591087,
+      "source_training_seconds": 1.1384113999956753,
+      "source_updates_per_epoch": 5,
+      "seed": 7,
+      "adaptations": [
+        {
+          "method": "continued_source",
+          "seconds": 0.265800200002559,
+          "updates": 50,
+          "final_coverage": 0.0
+        },
+        {
+          "method": "teacher_target1",
+          "seconds": 0.5816331000023638,
+          "updates": 50,
+          "final_coverage": 0.546875
+        },
+        {
+          "method": "teacher_target2",
+          "seconds": 0.6801403999998001,
+          "updates": 50,
+          "final_coverage": 0.4875
+        },
+        {
+          "method": "teacher_target3",
+          "seconds": 0.6168237000019872,
+          "updates": 50,
+          "final_coverage": 0.459375
+        }
+      ]
+    },
+    {
+      "best_source_epoch": 29,
+      "best_source_validation_macro_f1": 0.9239650802590819,
+      "source_training_seconds": 0.9821701000037137,
+      "source_updates_per_epoch": 5,
+      "seed": 17,
+      "adaptations": [
+        {
+          "method": "continued_source",
+          "seconds": 0.28176400000666035,
+          "updates": 50,
+          "final_coverage": 0.0
+        },
+        {
+          "method": "teacher_target1",
+          "seconds": 0.7165696000010939,
+          "updates": 50,
+          "final_coverage": 0.565625
+        },
+        {
+          "method": "teacher_target2",
+          "seconds": 0.6783579999973881,
+          "updates": 50,
+          "final_coverage": 0.534375
+        },
+        {
+          "method": "teacher_target3",
+          "seconds": 0.6538826000032714,
+          "updates": 50,
+          "final_coverage": 0.509375
+        }
+      ]
+    },
+    {
+      "best_source_epoch": 28,
+      "best_source_validation_macro_f1": 0.9649406903905104,
+      "source_training_seconds": 0.9461152000003494,
+      "source_updates_per_epoch": 5,
+      "seed": 27,
+      "adaptations": [
+        {
+          "method": "continued_source",
+          "seconds": 0.28440809999301564,
+          "updates": 50,
+          "final_coverage": 0.0
+        },
+        {
+          "method": "teacher_target1",
+          "seconds": 0.6899808999951347,
+          "updates": 50,
+          "final_coverage": 0.5875
+        },
+        {
+          "method": "teacher_target2",
+          "seconds": 0.7030048000015086,
+          "updates": 50,
+          "final_coverage": 0.46875
+        },
+        {
+          "method": "teacher_target3",
+          "seconds": 0.674030700000003,
+          "updates": 50,
+          "final_coverage": 0.43125
+        }
+      ]
+    }
+  ],
+  "checkpoint_sha256": {
+    "seed_17\\continued_source.pt": "9e46a7c8a6bd1ba737d06f664480fd053b1029b413a6226e61f3cb18169f05fa",
+    "seed_17\\source_best.pt": "684c89bee0c0aeeb7cb80e8a821813bc8c8e2e1ef85395b4ccbfbb262ec20496",
+    "seed_17\\student_target1.pt": "d819f6bc8ee114e4fb0e26b9baf6abdf0b019bc782fa5e84e773579f2686bd3f",
+    "seed_17\\student_target2.pt": "5c8f3ea380bacd0d32a18dfa778ce0230d5a89cf5f4e0acbec6519f7a1fd4a08",
+    "seed_17\\student_target3.pt": "72eece5bb6c670c2130296cda33a910db0ad8dc3dd95e3162c67f9931a45859b",
+    "seed_17\\teacher_target1.pt": "3e04ea185e5bcd2394e6cfe726c245ef065b2481c25492952b7df429be8f657e",
+    "seed_17\\teacher_target2.pt": "0a9e0dd7e3a00a4a64ce596ba000f70aff4be2a8b6447b948f93396c5fc49688",
+    "seed_17\\teacher_target3.pt": "ae6bb6251c2ff42ff71e791aa1704ff05ff8e5e107a3343589d91ffceace9bea",
+    "seed_27\\continued_source.pt": "b85c32ca3a477f64eb60bc274b3f0ec704b340b672c58a6193ee7ed2a2a591a7",
+    "seed_27\\source_best.pt": "5aecbb33705a3168a05bb13ec7f233bc3ed3708f8f0b1d55578525d5a6ab6bea",
+    "seed_27\\student_target1.pt": "fe555f55e1df74847f4cb5a230f3496cb33feb4a896d8042015a4c7d5353e0d9",
+    "seed_27\\student_target2.pt": "427f57cbf9139dacd650e22a228cac01f5c80f56becb8b29503752667feefa56",
+    "seed_27\\student_target3.pt": "99ca4e99bf5bcb365c735160516761e3d85cbce14fab40ac1f933045a32df55e",
+    "seed_27\\teacher_target1.pt": "2ee9e5555ebebc6225700107551ede3b6a9f75d69ca0eabc86c7f6f5f12ed2aa",
+    "seed_27\\teacher_target2.pt": "7a8180f9fadd7204bec46e94b9d3c230feea600df7d7786eda3c36a42492ea12",
+    "seed_27\\teacher_target3.pt": "443a1f82bb4820775a0768fa2d92c649b7cb034d3a50ac9f16d85b2ff4a6fb1c",
+    "seed_7\\continued_source.pt": "ec36a11d6a72c36d43b54e75d20c08928fb40b02a4baaca0873b26ba0a82baa8",
+    "seed_7\\source_best.pt": "78920413020e2a6a98193fe54942ddd7ae5fd2d5560d7a8452623713d97e69f3",
+    "seed_7\\student_target1.pt": "196c7f7555dc75b147b47314d88f49db50e6f380dd35f2ef7982f9351a0beb6e",
+    "seed_7\\student_target2.pt": "b30f3c6df50fd030ce7d77c561e4ea77cf0c11ce9f66aeb9548e05be398cd118",
+    "seed_7\\student_target3.pt": "ab04b06b21c8375939ff778eb96f69f931a43412f8a48e26778fdfa0e18eecf6",
+    "seed_7\\teacher_target1.pt": "96722369b0c1a77abb5a4ce2bf0a4c63b7857be500851a39be59f7830d8ae7d2",
+    "seed_7\\teacher_target2.pt": "e30298079329e17644828ed44fa6691ee57901b7912b3fc300ed54e78c91eecb",
+    "seed_7\\teacher_target3.pt": "ddc9424e3922f12551c4c41cc69da10db21bca232bcbecef73b407468887f598"
+  },
+  "torch": "2.13.0+cu126",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "parameter_count": 15940,
+  "target_labels_used_for_training_or_selection": false,
+  "target_evaluation_performed": false
+}

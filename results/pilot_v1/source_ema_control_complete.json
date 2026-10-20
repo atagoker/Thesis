@@ -1,0 +1,21 @@
+{
+  "reason": "Separate temporal averaging from unlabeled-target learning",
+  "timing": "Added after inspection of the initial three-method pilot; no target-score-based hyperparameter tuning",
+  "runs": [
+    {
+      "seed": 7,
+      "student_replay_max_abs_difference": 0.0,
+      "checkpoint_sha256": "c76876d234cb6e686b348a9ad3bc51d0be2ad29f6ddf152d3e33b344f8b6f8f8"
+    },
+    {
+      "seed": 17,
+      "student_replay_max_abs_difference": 0.0,
+      "checkpoint_sha256": "0c9841c136c29bf3d1495fc434ca7439d93c14a52913cee126f32437c798504c"
+    },
+    {
+      "seed": 27,
+      "student_replay_max_abs_difference": 0.0,
+      "checkpoint_sha256": "517f32d1892651b50d3ffcabb6dc1845a7bf641cdf81203a9880a50f6a6ca7a8"
+    }
+  ]
+}

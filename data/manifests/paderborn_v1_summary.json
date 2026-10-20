@@ -1,0 +1,120 @@
+{
+  "protocol_id": "paderborn_binary_bearing_disjoint_v1",
+  "config_sha256": "58b9409b4ed225e73fa7bd45fcc0539da6387492d1220c18f06315b72269cc99",
+  "raw_import_manifest_sha256": "b4ba4ef2608f01f408624389273d359c6a6bdf5f36983b6d60aa785a25e08306",
+  "record_manifest_sha256": "6ee7c70f0d7292b8e2721f0ff6748e9d62423e984066b2ad9094a8ec2ec89060",
+  "prepared_sha256": {
+    "evaluator\\evaluation_N09_M07_F10_labels.npz": "dfc1afc45f6ddb73fab4c3d2c76c02cdf07b95b2d6f9268c3520691e849126f8",
+    "evaluation_N09_M07_F10_unlabeled.npz": "0915da508183e29fcb55d5cc819604340a908178dbd79cdc5cc2c0b08cc88d86",
+    "evaluator\\evaluation_N15_M01_F10_labels.npz": "128e8a5f22fe8a950074e8ad7b994a4bc814abb2a20278c5ccb4d6f5ba3c477e",
+    "evaluation_N15_M01_F10_unlabeled.npz": "a1572c5fbcb43f9101488b2f42e50722d3fc640f69fba926ef1db66cc1cb899d",
+    "evaluator\\evaluation_N15_M07_F04_labels.npz": "07f87554c2d24c285e640a329c827c71d5002515006efdb90e2bd391a4000177",
+    "evaluation_N15_M07_F04_unlabeled.npz": "9399c76aa3057f99950b09bec838e79e86207192ec0822fbce3ed5cb2f0c6145",
+    "evaluator\\evaluation_N15_M07_F10_labels.npz": "0ea8ce6e64b57670ac63561bdae5b4ed296b11f4516622d9e4080c7b591ae51e",
+    "evaluation_N15_M07_F10_unlabeled.npz": "c7cf771f65b1f26dc87da7af5a7cbaebd214c1848ac373c95c7a7289aa70ba33",
+    "source_fit.npz": "2216f6822ea5e28023ef2c221d029967971b7cce7ff98271713d07ff3ef83850",
+    "source_validation.npz": "fcdc1215f28fc6390b8cd83a2a485717f40f3092f96636708e400946c0d1e5a0",
+    "evaluator\\target_adaptation_N09_M07_F10_labels.npz": "994d8790fc09b64f96813972d1881cc2d9f59cab4cac33c12626aa0e5b4dc705",
+    "target_adaptation_N09_M07_F10_unlabeled.npz": "fb01617729645c1054f15ee08878047646f331caa1d607f22e7ccdf18a42b3d0",
+    "evaluator\\target_adaptation_N15_M01_F10_labels.npz": "100594b4dab01c92adb39901138dedebd52da41f60e157896734abaada377b19",
+    "target_adaptation_N15_M01_F10_unlabeled.npz": "e8c57d563dc14c0eebe5e4872895741437ea726130d4c23275939d0291fc8693",
+    "evaluator\\target_adaptation_N15_M07_F04_labels.npz": "a90f47e1479de6380252be4d758b954c528e4fc6bfe3a0b7c50cbadfba7cc448",
+    "target_adaptation_N15_M07_F04_unlabeled.npz": "ee78ae1b5901d417242400f4ddbd8b3707c3aec2d5df912f24168bdd1fa561ce"
+  },
+  "raw_recordings_audit_attempted": 2560,
+  "readable_valid_recordings": 2559,
+  "excluded_recordings": [
+    {
+      "file": "data\\raw\\paderborn\\KA08\\N15_M01_F10_KA08_2.mat",
+      "error": "TypeError: Expecting matrix here",
+      "would_have_been_selected": false
+    }
+  ],
+  "selected_recordings": 1240,
+  "counts": [
+    {
+      "partition": "evaluation_N09_M07_F10",
+      "windows": 3729,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 620,
+      "faulty_windows": 3109
+    },
+    {
+      "partition": "evaluation_N15_M01_F10",
+      "windows": 3731,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 620,
+      "faulty_windows": 3111
+    },
+    {
+      "partition": "evaluation_N15_M07_F04",
+      "windows": 3722,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 620,
+      "faulty_windows": 3102
+    },
+    {
+      "partition": "evaluation_N15_M07_F10",
+      "windows": 3723,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 621,
+      "faulty_windows": 3102
+    },
+    {
+      "partition": "source_fit",
+      "windows": 9322,
+      "recordings": 300,
+      "bearings": 15,
+      "healthy_windows": 1862,
+      "faulty_windows": 7460
+    },
+    {
+      "partition": "source_validation",
+      "windows": 3104,
+      "recordings": 100,
+      "bearings": 5,
+      "healthy_windows": 620,
+      "faulty_windows": 2484
+    },
+    {
+      "partition": "target_adaptation_N09_M07_F10",
+      "windows": 3725,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 620,
+      "faulty_windows": 3105
+    },
+    {
+      "partition": "target_adaptation_N15_M01_F10",
+      "windows": 3735,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 620,
+      "faulty_windows": 3115
+    },
+    {
+      "partition": "target_adaptation_N15_M07_F04",
+      "windows": 3731,
+      "recordings": 120,
+      "bearings": 6,
+      "healthy_windows": 620,
+      "faulty_windows": 3111
+    }
+  ],
+  "maximum_abs_embedded_rate_difference_fraction": 0.14002416891987113,
+  "records_over_1_percent_embedded_rate_difference": 138,
+  "sampling_rate_evidence": "https://mb.uni-paderborn.de/fileadmin-mb/kat/PDF/Veroeffentlichungen/20160703_PHME16_CM_bearing.pdf (section 4.1, page 7)",
+  "label_evidence": "https://mb.uni-paderborn.de/fileadmin-mb/kat/PDF/Veroeffentlichungen/20160703_PHME16_CM_bearing.pdf (tables 4, 5 and 7)",
+  "limitations": [
+    "Published nominal 64 kHz used despite embedded HostService timing discrepancies; physical frequency calibration unresolved.",
+    "One fixed bearing split; only one healthy test bearing, so false-positive generalization is poorly estimated.",
+    "Target evaluation changes both bearing identity and operating condition relative to source training.",
+    "Windows and repetitions from the same bearing are correlated, not independent experiments.",
+    "Binary healthy/faulty; not a reproduction of the earlier CWRU four-class task.",
+    "Target adaptation pools are mixed-condition benchmarks, not healthy-only commissioning."
+  ]
+}

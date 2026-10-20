@@ -1,0 +1,2483 @@
+{
+  "evaluated_utc": "2026-10-18T22:33:01.103738+00:00",
+  "protocol": {
+    "protocol_id": "cwru48_fourclass_temporal_pilot_v1",
+    "status": "pilot, not independent-bearing validation",
+    "source_load": 0,
+    "target_loads": [
+      1,
+      2,
+      3
+    ],
+    "seeds": [
+      7,
+      17,
+      27
+    ],
+    "raw_sampling_rate_hz": 48000,
+    "processed_sampling_rate_hz": 12000,
+    "window_length": 1024,
+    "stride": 1024,
+    "raw_boundary_gap_samples": 4096,
+    "processed_edge_trim_samples": 128,
+    "split_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "normalization": "per-window z-score",
+    "batch_size": 64,
+    "source_epochs": 30,
+    "adaptation_epochs": 10,
+    "source_learning_rate": 0.001,
+    "adaptation_learning_rate": 0.0002,
+    "weight_decay": 1e-05,
+    "ema_alpha": 0.99,
+    "confidence_threshold": 0.9,
+    "target_loss_weight": 0.5,
+    "weak_noise_std": 0.01,
+    "strong_noise_std": 0.05,
+    "strong_gain_min": 0.9,
+    "strong_gain_max": 1.1,
+    "source_selection": "highest source validation macro F1; earliest tie",
+    "adapted_selection": "final epoch fixed in advance",
+    "primary_metric": "target test macro F1",
+    "source_access_during_adaptation": true,
+    "teacher_model": "custom EMA teacher; not full CAT reproduction",
+    "target_validation_usage": "unused",
+    "label_policy": "target commissioning archives contain x and IDs only; labels reside in evaluator archives"
+  },
+  "source_tests": [
+    {
+      "seed": 7,
+      "accuracy": 0.900990099009901,
+      "macro_f1": 0.9215774027879676,
+      "balanced_accuracy": 0.9214015151515151,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.26517486572265625,
+      "ece_15_bins": 0.10423396483506307,
+      "test_windows": 101
+    },
+    {
+      "seed": 17,
+      "accuracy": 0.8316831683168316,
+      "macro_f1": 0.8697950063149713,
+      "balanced_accuracy": 0.8683712121212122,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.35246995091438293,
+      "ece_15_bins": 0.08127691013978258,
+      "test_windows": 101
+    },
+    {
+      "seed": 27,
+      "accuracy": 0.9504950495049505,
+      "macro_f1": 0.959279688513952,
+      "balanced_accuracy": 0.9564393939393939,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.22845938801765442,
+      "ece_15_bins": 0.09504989822312158,
+      "test_windows": 101
+    }
+  ],
+  "results": [
+    {
+      "seed": 7,
+      "target_load_hp": 1,
+      "method": "source_only",
+      "accuracy": 0.8127853881278538,
+      "macro_f1": 0.8474743289898652,
+      "balanced_accuracy": 0.8492647058823529,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.3723852336406708,
+      "ece_15_bins": 0.07002262192774036,
+      "test_windows": 219
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 1,
+      "method": "continued_source",
+      "accuracy": 0.8493150684931506,
+      "macro_f1": 0.8757791257151759,
+      "balanced_accuracy": 0.8786764705882353,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.33752867579460144,
+      "ece_15_bins": 0.03476284791345466,
+      "test_windows": 219
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 1,
+      "method": "teacher_student",
+      "accuracy": 0.8356164383561644,
+      "macro_f1": 0.8650581444699093,
+      "balanced_accuracy": 0.8676470588235294,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.36135363578796387,
+      "ece_15_bins": 0.0577167468528225,
+      "test_windows": 219
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 2,
+      "method": "source_only",
+      "accuracy": 0.7850877192982456,
+      "macro_f1": 0.817216931513766,
+      "balanced_accuracy": 0.8224637681159421,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.47882160544395447,
+      "ece_15_bins": 0.04694879355660657,
+      "test_windows": 228
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 2,
+      "method": "continued_source",
+      "accuracy": 0.8114035087719298,
+      "macro_f1": 0.8392620865139948,
+      "balanced_accuracy": 0.8442028985507246,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.4334413707256317,
+      "ece_15_bins": 0.06557721892992652,
+      "test_windows": 228
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 2,
+      "method": "teacher_student",
+      "accuracy": 0.7982456140350878,
+      "macro_f1": 0.8275801538681167,
+      "balanced_accuracy": 0.8333333333333333,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.4609606862068176,
+      "ece_15_bins": 0.041081116910566345,
+      "test_windows": 228
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 3,
+      "method": "source_only",
+      "accuracy": 0.7841409691629956,
+      "macro_f1": 0.8211262525081564,
+      "balanced_accuracy": 0.8215985290936622,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.45223119854927063,
+      "ece_15_bins": 0.06534580433421197,
+      "test_windows": 227
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 3,
+      "method": "continued_source",
+      "accuracy": 0.8237885462555066,
+      "macro_f1": 0.8536178784418221,
+      "balanced_accuracy": 0.854747999134761,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.4171968698501587,
+      "ece_15_bins": 0.033709929378022196,
+      "test_windows": 227
+    },
+    {
+      "seed": 7,
+      "target_load_hp": 3,
+      "method": "teacher_student",
+      "accuracy": 0.8061674008810573,
+      "macro_f1": 0.8381772875012312,
+      "balanced_accuracy": 0.8402552455115726,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.4345387816429138,
+      "ece_15_bins": 0.06723307775505838,
+      "test_windows": 227
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 1,
+      "method": "source_only",
+      "accuracy": 0.8127853881278538,
+      "macro_f1": 0.8379102317922458,
+      "balanced_accuracy": 0.8492647058823529,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.35324355959892273,
+      "ece_15_bins": 0.05086929694702636,
+      "test_windows": 219
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 1,
+      "method": "continued_source",
+      "accuracy": 0.867579908675799,
+      "macro_f1": 0.890684416525304,
+      "balanced_accuracy": 0.8933823529411764,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.30327972769737244,
+      "ece_15_bins": 0.06483207214368533,
+      "test_windows": 219
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 1,
+      "method": "teacher_student",
+      "accuracy": 0.8538812785388128,
+      "macro_f1": 0.8789486708144796,
+      "balanced_accuracy": 0.8823529411764706,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.32066434621810913,
+      "ece_15_bins": 0.06976905424300937,
+      "test_windows": 219
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 2,
+      "method": "source_only",
+      "accuracy": 0.8026315789473685,
+      "macro_f1": 0.8184739075126537,
+      "balanced_accuracy": 0.8369565217391305,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.4168205261230469,
+      "ece_15_bins": 0.044338933339244414,
+      "test_windows": 228
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 2,
+      "method": "continued_source",
+      "accuracy": 0.8464912280701754,
+      "macro_f1": 0.8708199747401146,
+      "balanced_accuracy": 0.8731884057971014,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.3677518367767334,
+      "ece_15_bins": 0.05702483719378184,
+      "test_windows": 228
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 2,
+      "method": "teacher_student",
+      "accuracy": 0.8333333333333334,
+      "macro_f1": 0.857672873166791,
+      "balanced_accuracy": 0.8623188405797102,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.3852591812610626,
+      "ece_15_bins": 0.05041999761995514,
+      "test_windows": 228
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 3,
+      "method": "source_only",
+      "accuracy": 0.7973568281938326,
+      "macro_f1": 0.823850842039979,
+      "balanced_accuracy": 0.8333333333333334,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.49033600091934204,
+      "ece_15_bins": 0.06874043773449467,
+      "test_windows": 227
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 3,
+      "method": "continued_source",
+      "accuracy": 0.7973568281938326,
+      "macro_f1": 0.8288982259570494,
+      "balanced_accuracy": 0.8333333333333333,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.44190117716789246,
+      "ece_15_bins": 0.05176760577945456,
+      "test_windows": 227
+    },
+    {
+      "seed": 17,
+      "target_load_hp": 3,
+      "method": "teacher_student",
+      "accuracy": 0.7797356828193832,
+      "macro_f1": 0.8117767801649228,
+      "balanced_accuracy": 0.8188405797101449,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.46603500843048096,
+      "ece_15_bins": 0.0624246794221685,
+      "test_windows": 227
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 1,
+      "method": "source_only",
+      "accuracy": 0.8447488584474886,
+      "macro_f1": 0.8694419734002217,
+      "balanced_accuracy": 0.875,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.3246249556541443,
+      "ece_15_bins": 0.053943158829048876,
+      "test_windows": 219
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 1,
+      "method": "continued_source",
+      "accuracy": 0.9223744292237442,
+      "macro_f1": 0.9365013835085777,
+      "balanced_accuracy": 0.9375,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.2610176205635071,
+      "ece_15_bins": 0.060464343659953984,
+      "test_windows": 219
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 1,
+      "method": "teacher_student",
+      "accuracy": 0.863013698630137,
+      "macro_f1": 0.8863557883226383,
+      "balanced_accuracy": 0.8897058823529411,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.30542808771133423,
+      "ece_15_bins": 0.05114184857503463,
+      "test_windows": 219
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 2,
+      "method": "source_only",
+      "accuracy": 0.9035087719298246,
+      "macro_f1": 0.9180968987420601,
+      "balanced_accuracy": 0.9202898550724636,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.2921511232852936,
+      "ece_15_bins": 0.10657455340812079,
+      "test_windows": 228
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 2,
+      "method": "continued_source",
+      "accuracy": 0.8991228070175439,
+      "macro_f1": 0.9156589018445647,
+      "balanced_accuracy": 0.9166666666666667,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.264540433883667,
+      "ece_15_bins": 0.0564136975689938,
+      "test_windows": 228
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 2,
+      "method": "teacher_student",
+      "accuracy": 0.9035087719298246,
+      "macro_f1": 0.9190476190476191,
+      "balanced_accuracy": 0.9202898550724637,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.2748034596443176,
+      "ece_15_bins": 0.06935323774814607,
+      "test_windows": 228
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 3,
+      "method": "source_only",
+      "accuracy": 0.8325991189427313,
+      "macro_f1": 0.8650843808597819,
+      "balanced_accuracy": 0.8606965174129354,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.35997211933135986,
+      "ece_15_bins": 0.06462336426789542,
+      "test_windows": 227
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 3,
+      "method": "continued_source",
+      "accuracy": 0.8149779735682819,
+      "macro_f1": 0.8371057464614511,
+      "balanced_accuracy": 0.8229824199162292,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.13636363636363635,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.44882893562316895,
+      "ece_15_bins": 0.09856318285286686,
+      "test_windows": 227
+    },
+    {
+      "seed": 27,
+      "target_load_hp": 3,
+      "method": "teacher_student",
+      "accuracy": 0.8281938325991189,
+      "macro_f1": 0.8612815558279744,
+      "balanced_accuracy": 0.8570733290071382,
+      "fault_recall_argmax": 1.0,
+      "healthy_false_positive_rate_argmax": 0.0,
+      "fault_roc_auc": 1.0,
+      "negative_log_likelihood": 0.365351140499115,
+      "ece_15_bins": 0.06538429016058665,
+      "test_windows": 227
+    }
+  ],
+  "details": {
+    "seed7_target1_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          42,
+          25
+        ],
+        [
+          0,
+          0,
+          15,
+          53
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9838709677419355,
+          "recall": 1.0,
+          "f1-score": 0.991869918699187,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.7368421052631579,
+          "recall": 0.6176470588235294,
+          "f1-score": 0.672,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.6794871794871795,
+          "recall": 0.7794117647058824,
+          "f1-score": 0.726027397260274,
+          "support": 68.0
+        },
+        "accuracy": 0.8127853881278538,
+        "macro avg": {
+          "precision": 0.8500500631230683,
+          "recall": 0.8492647058823529,
+          "f1-score": 0.8474743289898652,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8142763488368995,
+          "recall": 0.8127853881278538,
+          "f1-score": 0.810821589289265,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5489051094890511,
+        "accepted": 376,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target1_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          53,
+          9
+        ],
+        [
+          0,
+          0,
+          18,
+          50
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9104477611940298,
+          "recall": 1.0,
+          "f1-score": 0.953125,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.7464788732394366,
+          "recall": 0.7794117647058824,
+          "f1-score": 0.762589928057554,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.847457627118644,
+          "recall": 0.7352941176470589,
+          "f1-score": 0.7874015748031497,
+          "support": 68.0
+        },
+        "accuracy": 0.8493150684931506,
+        "macro avg": {
+          "precision": 0.8760960653880276,
+          "recall": 0.8786764705882353,
+          "f1-score": 0.8757791257151759,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8489725819962799,
+          "recall": 0.8493150684931506,
+          "f1-score": 0.8472148273722733,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.583941605839416,
+        "accepted": 400,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target1_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          48,
+          16
+        ],
+        [
+          0,
+          0,
+          16,
+          52
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9384615384615385,
+          "recall": 1.0,
+          "f1-score": 0.9682539682539683,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.75,
+          "recall": 0.7058823529411765,
+          "f1-score": 0.7272727272727273,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.7647058823529411,
+          "recall": 0.7647058823529411,
+          "f1-score": 0.7647058823529411,
+          "support": 68.0
+        },
+        "accuracy": 0.8356164383561644,
+        "macro avg": {
+          "precision": 0.86329185520362,
+          "recall": 0.8676470588235294,
+          "f1-score": 0.8650581444699093,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8321742184755884,
+          "recall": 0.8356164383561644,
+          "f1-score": 0.8334156964293951,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5635036496350365,
+        "accepted": 386,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target2_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          37,
+          27
+        ],
+        [
+          0,
+          0,
+          17,
+          52
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9315068493150684,
+          "recall": 1.0,
+          "f1-score": 0.9645390070921985,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.6851851851851852,
+          "recall": 0.5362318840579711,
+          "f1-score": 0.6016260162601627,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.6582278481012658,
+          "recall": 0.7536231884057971,
+          "f1-score": 0.7027027027027027,
+          "support": 69.0
+        },
+        "accuracy": 0.7850877192982456,
+        "macro avg": {
+          "precision": 0.8187299706503799,
+          "recall": 0.8224637681159421,
+          "f1-score": 0.817216931513766,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.7808682677639902,
+          "recall": 0.7850877192982456,
+          "f1-score": 0.7788918161873123,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.43509272467902993,
+        "accepted": 305,
+        "precision": 0.9868852459016394,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target2_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          14,
+          44,
+          11
+        ],
+        [
+          0,
+          0,
+          18,
+          51
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8292682926829268,
+          "recall": 1.0,
+          "f1-score": 0.9066666666666666,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.7096774193548387,
+          "recall": 0.6376811594202898,
+          "f1-score": 0.6717557251908397,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8225806451612904,
+          "recall": 0.7391304347826086,
+          "f1-score": 0.7786259541984732,
+          "support": 69.0
+        },
+        "accuracy": 0.8114035087719298,
+        "macro avg": {
+          "precision": 0.840381589299764,
+          "recall": 0.8442028985507246,
+          "f1-score": 0.8392620865139948,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.8075265366405787,
+          "recall": 0.8114035087719298,
+          "f1-score": 0.8058318825052453,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.514978601997147,
+        "accepted": 361,
+        "precision": 0.9861495844875346,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target2_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          11,
+          41,
+          17
+        ],
+        [
+          0,
+          0,
+          18,
+          51
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8607594936708861,
+          "recall": 1.0,
+          "f1-score": 0.9251700680272109,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.6949152542372882,
+          "recall": 0.5942028985507246,
+          "f1-score": 0.640625,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.75,
+          "recall": 0.7391304347826086,
+          "f1-score": 0.7445255474452555,
+          "support": 69.0
+        },
+        "accuracy": 0.7982456140350878,
+        "macro avg": {
+          "precision": 0.8264186869770436,
+          "recall": 0.8333333333333333,
+          "f1-score": 0.8275801538681167,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.7904859566315487,
+          "recall": 0.7982456140350878,
+          "f1-score": 0.7916094403490042,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.48359486447931527,
+        "accepted": 339,
+        "precision": 0.9882005899705014,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target3_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          59,
+          2,
+          6
+        ],
+        [
+          0,
+          10,
+          50,
+          9
+        ],
+        [
+          0,
+          0,
+          22,
+          47
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.855072463768116,
+          "recall": 0.8805970149253731,
+          "f1-score": 0.8676470588235294,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6756756756756757,
+          "recall": 0.7246376811594203,
+          "f1-score": 0.6993006993006993,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.7580645161290323,
+          "recall": 0.6811594202898551,
+          "f1-score": 0.7175572519083969,
+          "support": 69.0
+        },
+        "accuracy": 0.7841409691629956,
+        "macro avg": {
+          "precision": 0.8222031638932059,
+          "recall": 0.8215985290936622,
+          "f1-score": 0.8211262525081564,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.7851010057576592,
+          "recall": 0.7841409691629956,
+          "f1-score": 0.7836808439409872,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.4542857142857143,
+        "accepted": 318,
+        "precision": 0.9748427672955975,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target3_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          64,
+          3,
+          0
+        ],
+        [
+          0,
+          11,
+          54,
+          4
+        ],
+        [
+          0,
+          0,
+          22,
+          47
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8533333333333334,
+          "recall": 0.9552238805970149,
+          "f1-score": 0.9014084507042254,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6835443037974683,
+          "recall": 0.782608695652174,
+          "f1-score": 0.7297297297297297,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.9215686274509803,
+          "recall": 0.6811594202898551,
+          "f1-score": 0.7833333333333333,
+          "support": 69.0
+        },
+        "accuracy": 0.8237885462555066,
+        "macro avg": {
+          "precision": 0.8646115661454455,
+          "recall": 0.854747999134761,
+          "f1-score": 0.8536178784418221,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.8366789673545212,
+          "recall": 0.8237885462555066,
+          "f1-score": 0.8228886235618259,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.4471428571428571,
+        "accepted": 313,
+        "precision": 0.9584664536741214,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed7_target3_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          64,
+          2,
+          1
+        ],
+        [
+          0,
+          11,
+          50,
+          8
+        ],
+        [
+          0,
+          0,
+          22,
+          47
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8533333333333334,
+          "recall": 0.9552238805970149,
+          "f1-score": 0.9014084507042254,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6756756756756757,
+          "recall": 0.7246376811594203,
+          "f1-score": 0.6993006993006993,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8392857142857143,
+          "recall": 0.6811594202898551,
+          "f1-score": 0.752,
+          "support": 69.0
+        },
+        "accuracy": 0.8061674008810573,
+        "macro avg": {
+          "precision": 0.8420736808236808,
+          "recall": 0.8402552455115726,
+          "f1-score": 0.8381772875012312,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.8092760759500848,
+          "recall": 0.8061674008810573,
+          "f1-score": 0.8041150416252483,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.4742857142857143,
+        "accepted": 332,
+        "precision": 0.9728915662650602,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target1_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          34,
+          27
+        ],
+        [
+          0,
+          0,
+          7,
+          61
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8970588235294118,
+          "recall": 1.0,
+          "f1-score": 0.9457364341085271,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.8292682926829268,
+          "recall": 0.5,
+          "f1-score": 0.6238532110091743,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.6931818181818182,
+          "recall": 0.8970588235294118,
+          "f1-score": 0.782051282051282,
+          "support": 68.0
+        },
+        "accuracy": 0.8127853881278538,
+        "macro avg": {
+          "precision": 0.8548772335985392,
+          "recall": 0.8492647058823529,
+          "f1-score": 0.8379102317922458,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.823046556046104,
+          "recall": 0.8127853881278538,
+          "f1-score": 0.8004174794919233,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5591240875912409,
+        "accepted": 383,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target1_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          53,
+          9
+        ],
+        [
+          0,
+          0,
+          14,
+          54
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9104477611940298,
+          "recall": 1.0,
+          "f1-score": 0.953125,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.7910447761194029,
+          "recall": 0.7794117647058824,
+          "f1-score": 0.7851851851851852,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.8571428571428571,
+          "recall": 0.7941176470588235,
+          "f1-score": 0.8244274809160306,
+          "support": 68.0
+        },
+        "accuracy": 0.867579908675799,
+        "macro avg": {
+          "precision": 0.8896588486140725,
+          "recall": 0.8933823529411764,
+          "f1-score": 0.890684416525304,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8658176826240617,
+          "recall": 0.867579908675799,
+          "f1-score": 0.8657273346798295,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5620437956204379,
+        "accepted": 385,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target1_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          49,
+          13
+        ],
+        [
+          0,
+          0,
+          13,
+          55
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9104477611940298,
+          "recall": 1.0,
+          "f1-score": 0.953125,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.7903225806451613,
+          "recall": 0.7205882352941176,
+          "f1-score": 0.7538461538461538,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.8088235294117647,
+          "recall": 0.8088235294117647,
+          "f1-score": 0.8088235294117647,
+          "support": 68.0
+        },
+        "accuracy": 0.8538812785388128,
+        "macro avg": {
+          "precision": 0.8773984678127389,
+          "recall": 0.8823529411764706,
+          "f1-score": 0.8789486708144796,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8505901777018575,
+          "recall": 0.8538812785388128,
+          "f1-score": 0.8511514313312258,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5532846715328467,
+        "accepted": 379,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target2_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          15,
+          29,
+          25
+        ],
+        [
+          0,
+          0,
+          5,
+          64
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8192771084337349,
+          "recall": 1.0,
+          "f1-score": 0.9006622516556292,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.8529411764705882,
+          "recall": 0.42028985507246375,
+          "f1-score": 0.5631067961165048,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.7191011235955056,
+          "recall": 0.927536231884058,
+          "f1-score": 0.810126582278481,
+          "support": 69.0
+        },
+        "accuracy": 0.8026315789473685,
+        "macro avg": {
+          "precision": 0.8478298521249572,
+          "recall": 0.8369565217391305,
+          "f1-score": 0.8184739075126537,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.8165866757809406,
+          "recall": 0.8026315789473685,
+          "f1-score": 0.7806935799203367,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5420827389443652,
+        "accepted": 380,
+        "precision": 0.9947368421052631,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target2_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          10,
+          53,
+          6
+        ],
+        [
+          0,
+          0,
+          19,
+          50
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8717948717948718,
+          "recall": 1.0,
+          "f1-score": 0.9315068493150684,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.7361111111111112,
+          "recall": 0.7681159420289855,
+          "f1-score": 0.75177304964539,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8928571428571429,
+          "recall": 0.7246376811594203,
+          "f1-score": 0.8,
+          "support": 69.0
+        },
+        "accuracy": 0.8464912280701754,
+        "macro avg": {
+          "precision": 0.8751907814407814,
+          "recall": 0.8731884057971014,
+          "f1-score": 0.8708199747401146,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.8494774596748281,
+          "recall": 0.8464912280701754,
+          "f1-score": 0.8439245885041954,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5449358059914408,
+        "accepted": 382,
+        "precision": 0.9947643979057592,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target2_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          13,
+          45,
+          11
+        ],
+        [
+          0,
+          0,
+          14,
+          55
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.8395061728395061,
+          "recall": 1.0,
+          "f1-score": 0.912751677852349,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.7627118644067796,
+          "recall": 0.6521739130434783,
+          "f1-score": 0.703125,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8333333333333334,
+          "recall": 0.7971014492753623,
+          "f1-score": 0.8148148148148148,
+          "support": 69.0
+        },
+        "accuracy": 0.8333333333333334,
+        "macro avg": {
+          "precision": 0.8588878426449048,
+          "recall": 0.8623188405797102,
+          "f1-score": 0.857672873166791,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.8298839403383956,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.8280919355972893,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5292439372325249,
+        "accepted": 371,
+        "precision": 0.9946091644204852,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target3_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          67,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          37,
+          13
+        ],
+        [
+          0,
+          0,
+          14,
+          55
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.7790697674418605,
+          "recall": 1.0,
+          "f1-score": 0.8758169934640523,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.7254901960784313,
+          "recall": 0.5362318840579711,
+          "f1-score": 0.6166666666666667,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8088235294117647,
+          "recall": 0.7971014492753623,
+          "f1-score": 0.8029197080291971,
+          "support": 69.0
+        },
+        "accuracy": 0.7973568281938326,
+        "macro avg": {
+          "precision": 0.8283458732330142,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.823850842039979,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.7932393016626793,
+          "recall": 0.7973568281938326,
+          "f1-score": 0.7869215789255776,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.48142857142857143,
+        "accepted": 337,
+        "precision": 0.9287833827893175,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target3_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          67,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          46,
+          4
+        ],
+        [
+          0,
+          0,
+          23,
+          46
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.7790697674418605,
+          "recall": 1.0,
+          "f1-score": 0.8758169934640523,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.6666666666666666,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.92,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.773109243697479,
+          "support": 69.0
+        },
+        "accuracy": 0.7973568281938326,
+        "macro avg": {
+          "precision": 0.8414341085271317,
+          "recall": 0.8333333333333333,
+          "f1-score": 0.8288982259570494,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.809152750742752,
+          "recall": 0.7973568281938326,
+          "f1-score": 0.7930584862432491,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.4957142857142857,
+        "accepted": 347,
+        "precision": 0.930835734870317,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed17_target3_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          67,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          40,
+          10
+        ],
+        [
+          0,
+          0,
+          21,
+          48
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.7790697674418605,
+          "recall": 1.0,
+          "f1-score": 0.8758169934640523,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6557377049180327,
+          "recall": 0.5797101449275363,
+          "f1-score": 0.6153846153846154,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8275862068965517,
+          "recall": 0.6956521739130435,
+          "f1-score": 0.7559055118110236,
+          "support": 69.0
+        },
+        "accuracy": 0.7797356828193832,
+        "macro avg": {
+          "precision": 0.8155984198141112,
+          "recall": 0.8188405797101449,
+          "f1-score": 0.8117767801649228,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.7777401953031321,
+          "recall": 0.7797356828193832,
+          "f1-score": 0.7722412217559057,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.4742857142857143,
+        "accepted": 332,
+        "precision": 0.927710843373494,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target1_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          39,
+          27
+        ],
+        [
+          0,
+          0,
+          5,
+          63
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9682539682539683,
+          "recall": 1.0,
+          "f1-score": 0.9838709677419355,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.8863636363636364,
+          "recall": 0.5735294117647058,
+          "f1-score": 0.6964285714285714,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.7,
+          "recall": 0.9264705882352942,
+          "f1-score": 0.7974683544303798,
+          "support": 68.0
+        },
+        "accuracy": 0.8447488584474886,
+        "macro avg": {
+          "precision": 0.8886544011544011,
+          "recall": 0.875,
+          "f1-score": 0.8694419734002217,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8627224627224627,
+          "recall": 0.8447488584474886,
+          "f1-score": 0.8383612784961952,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5635036496350365,
+        "accepted": 386,
+        "precision": 0.9974093264248705,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target1_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          61,
+          4
+        ],
+        [
+          0,
+          0,
+          10,
+          58
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.953125,
+          "recall": 1.0,
+          "f1-score": 0.976,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.8591549295774648,
+          "recall": 0.8970588235294118,
+          "f1-score": 0.8776978417266187,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.9354838709677419,
+          "recall": 0.8529411764705882,
+          "f1-score": 0.8923076923076924,
+          "support": 68.0
+        },
+        "accuracy": 0.9223744292237442,
+        "macro avg": {
+          "precision": 0.9369409501363017,
+          "recall": 0.9375,
+          "f1-score": 0.9365013835085777,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.9231783718587856,
+          "recall": 0.9223744292237442,
+          "f1-score": 0.9219012617092839,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5927007299270073,
+        "accepted": 406,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target1_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          61,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          44,
+          22
+        ],
+        [
+          0,
+          0,
+          6,
+          62
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9682539682539683,
+          "recall": 1.0,
+          "f1-score": 0.9838709677419355,
+          "support": 61.0
+        },
+        "rolling_element": {
+          "precision": 0.88,
+          "recall": 0.6470588235294118,
+          "f1-score": 0.7457627118644068,
+          "support": 68.0
+        },
+        "outer_race": {
+          "precision": 0.7380952380952381,
+          "recall": 0.9117647058823529,
+          "f1-score": 0.8157894736842105,
+          "support": 68.0
+        },
+        "accuracy": 0.863013698630137,
+        "macro avg": {
+          "precision": 0.8965873015873016,
+          "recall": 0.8897058823529411,
+          "f1-score": 0.8863557883226383,
+          "support": 219.0
+        },
+        "weighted avg": {
+          "precision": 0.8725751975067045,
+          "recall": 0.863013698630137,
+          "f1-score": 0.8593683910938997,
+          "support": 219.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5766423357664233,
+        "accepted": 395,
+        "precision": 1.0,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target2_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          51,
+          14
+        ],
+        [
+          0,
+          0,
+          4,
+          65
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9444444444444444,
+          "recall": 1.0,
+          "f1-score": 0.9714285714285714,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.9272727272727272,
+          "recall": 0.7391304347826086,
+          "f1-score": 0.8225806451612904,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8227848101265823,
+          "recall": 0.9420289855072463,
+          "f1-score": 0.8783783783783784,
+          "support": 69.0
+        },
+        "accuracy": 0.9035087719298246,
+        "macro avg": {
+          "precision": 0.9236254954609384,
+          "recall": 0.9202898550724636,
+          "f1-score": 0.9180968987420601,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.9077903171174323,
+          "recall": 0.9035087719298246,
+          "f1-score": 0.9009794538657017,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.44079885877318115,
+        "accepted": 309,
+        "precision": 0.9902912621359223,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target2_continued_source": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          63,
+          1
+        ],
+        [
+          0,
+          0,
+          17,
+          52
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9315068493150684,
+          "recall": 1.0,
+          "f1-score": 0.9645390070921985,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.7875,
+          "recall": 0.9130434782608695,
+          "f1-score": 0.8456375838926175,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.9811320754716981,
+          "recall": 0.7536231884057971,
+          "f1-score": 0.8524590163934426,
+          "support": 69.0
+        },
+        "accuracy": 0.8991228070175439,
+        "macro avg": {
+          "precision": 0.9250347311966916,
+          "recall": 0.9166666666666667,
+          "f1-score": 0.9156589018445647,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.9095529778989992,
+          "recall": 0.8991228070175439,
+          "f1-score": 0.8980584118509107,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5606276747503567,
+        "accepted": 393,
+        "precision": 0.9923664122137404,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target2_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          68,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          55,
+          10
+        ],
+        [
+          0,
+          0,
+          8,
+          61
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9444444444444444,
+          "recall": 1.0,
+          "f1-score": 0.9714285714285714,
+          "support": 68.0
+        },
+        "rolling_element": {
+          "precision": 0.873015873015873,
+          "recall": 0.7971014492753623,
+          "f1-score": 0.8333333333333334,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.8591549295774648,
+          "recall": 0.8840579710144928,
+          "f1-score": 0.8714285714285714,
+          "support": 69.0
+        },
+        "accuracy": 0.9035087719298246,
+        "macro avg": {
+          "precision": 0.9191538117594455,
+          "recall": 0.9202898550724637,
+          "f1-score": 0.9190476190476191,
+          "support": 228.0
+        },
+        "weighted avg": {
+          "precision": 0.9023772263208882,
+          "recall": 0.9035087719298246,
+          "f1-score": 0.9021303258145363,
+          "support": 228.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.48216833095577744,
+        "accepted": 338,
+        "precision": 0.9940828402366864,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target3_source_only": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          52,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          66,
+          3
+        ],
+        [
+          0,
+          0,
+          20,
+          49
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 1.0,
+          "recall": 0.7761194029850746,
+          "f1-score": 0.8739495798319328,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6534653465346535,
+          "recall": 0.9565217391304348,
+          "f1-score": 0.7764705882352941,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.9423076923076923,
+          "recall": 0.7101449275362319,
+          "f1-score": 0.8099173553719008,
+          "support": 69.0
+        },
+        "accuracy": 0.8325991189427313,
+        "macro avg": {
+          "precision": 0.8989432597105864,
+          "recall": 0.8606965174129354,
+          "f1-score": 0.8650843808597819,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.8771292496921669,
+          "recall": 0.8325991189427313,
+          "f1-score": 0.837072202456546,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.4328571428571429,
+        "accepted": 303,
+        "precision": 0.9900990099009901,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target3_continued_source": {
+      "confusion_matrix": [
+        [
+          19,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          52,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          69,
+          0
+        ],
+        [
+          0,
+          0,
+          24,
+          45
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 0.8636363636363636,
+          "f1-score": 0.926829268292683,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 0.9454545454545454,
+          "recall": 0.7761194029850746,
+          "f1-score": 0.8524590163934426,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6388888888888888,
+          "recall": 1.0,
+          "f1-score": 0.7796610169491526,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 1.0,
+          "recall": 0.6521739130434783,
+          "f1-score": 0.7894736842105263,
+          "support": 69.0
+        },
+        "accuracy": 0.8149779735682819,
+        "macro avg": {
+          "precision": 0.8960858585858585,
+          "recall": 0.8229824199162292,
+          "f1-score": 0.8371057464614511,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.8741356294219731,
+          "recall": 0.8149779735682819,
+          "f1-score": 0.8183933585058041,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.5485714285714286,
+        "accepted": 384,
+        "precision": 0.9296875,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    },
+    "seed27_target3_teacher_student": {
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          52,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          67,
+          2
+        ],
+        [
+          0,
+          0,
+          22,
+          47
+        ]
+      ],
+      "class_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 22.0
+        },
+        "inner_race": {
+          "precision": 1.0,
+          "recall": 0.7761194029850746,
+          "f1-score": 0.8739495798319328,
+          "support": 67.0
+        },
+        "rolling_element": {
+          "precision": 0.6442307692307693,
+          "recall": 0.9710144927536232,
+          "f1-score": 0.7745664739884393,
+          "support": 69.0
+        },
+        "outer_race": {
+          "precision": 0.9591836734693877,
+          "recall": 0.6811594202898551,
+          "f1-score": 0.7966101694915254,
+          "support": 69.0
+        },
+        "accuracy": 0.8281938325991189,
+        "macro avg": {
+          "precision": 0.9008536106750392,
+          "recall": 0.8570733290071382,
+          "f1-score": 0.8612815558279744,
+          "support": 227.0
+        },
+        "weighted avg": {
+          "precision": 0.879451967164365,
+          "recall": 0.8281938325991189,
+          "f1-score": 0.8324485032989297,
+          "support": 227.0
+        }
+      },
+      "clean_fit_pseudolabel_diagnostic": {
+        "coverage": 0.46714285714285714,
+        "accepted": 327,
+        "precision": 0.9908256880733946,
+        "definition": "final fixed model on unaugmented commissioning inputs; not the training trajectory",
+        "used_for_training_or_selection": false
+      }
+    }
+  },
+  "mean_paired_teacher_minus_source_pp": 1.4135902869439172,
+  "mean_paired_teacher_minus_continued_pp": -1.1380985169374667,
+  "negative_transfer_task_seed_pairs": 2,
+  "task_seed_pairs": 9,
+  "code_sha256": {
+    "scripts/check_setup.py": "ab8b1b68ddcaca2b6d750ccf6ccc86d88fec7f2b9f2669e6199b118aefbd1053",
+    "scripts/download_cwru.py": "26062fff913d19d137d9a55fee77e216cbb36b751599c78d9a782563e1f08113",
+    "scripts/evaluate_pilot.py": "4b439c5fd4573ad11d469391b95b3943d5df1468d603893af61a12cb107643aa",
+    "scripts/prepare_cwru.py": "725564c8e94e12539b183ad000b71048a619bb321f3d72b4fd8dac427e3c95ae",
+    "scripts/run_pilot.py": "aded0cc1e707b5b47ca9ab87ade8c32686683cd0f7cd8255e43287faae48a1d3",
+    "thesislib/common.py": "6d77dffbc68187c4d0f65b49cec7f305476276e66fa32cef0582c3a01d381217",
+    "thesislib/__init__.py": "3e9ba507d17d8896cf20c58e87a5199ec17f1bb3b321aa25b085bdd20605bf49",
+    "tests/test_pilot.py": "3a2f397ee1cb2bbfc50905cd51696e1142356574f68f1c9dbfa45f3e488ae1fb"
+  },
+  "interpretation": "Pilot seed variability on fixed temporal blocks, not independent-machine uncertainty."
+}

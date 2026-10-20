@@ -1,0 +1,676 @@
+{
+  "protocol_id": "cwru48_fourclass_temporal_pilot_v1",
+  "config_sha256": "0791c9efc55fc2d94d8ee23a2347a839963a84b93005896d26c300584e63c1d5",
+  "window_manifest_sha256": "044aaa3ade4c15bd4ba7495c1d447f93814b9952eef301f739a07075390f0704",
+  "counts": [
+    {
+      "load_hp": 0,
+      "split": "fit",
+      "class_name": "healthy",
+      "windows": 34
+    },
+    {
+      "load_hp": 0,
+      "split": "fit",
+      "class_name": "inner_race",
+      "windows": 77
+    },
+    {
+      "load_hp": 0,
+      "split": "fit",
+      "class_name": "rolling_element",
+      "windows": 104
+    },
+    {
+      "load_hp": 0,
+      "split": "fit",
+      "class_name": "outer_race",
+      "windows": 104
+    },
+    {
+      "load_hp": 0,
+      "split": "validation",
+      "class_name": "healthy",
+      "windows": 10
+    },
+    {
+      "load_hp": 0,
+      "split": "validation",
+      "class_name": "inner_race",
+      "windows": 21
+    },
+    {
+      "load_hp": 0,
+      "split": "validation",
+      "class_name": "rolling_element",
+      "windows": 30
+    },
+    {
+      "load_hp": 0,
+      "split": "validation",
+      "class_name": "outer_race",
+      "windows": 30
+    },
+    {
+      "load_hp": 0,
+      "split": "test",
+      "class_name": "healthy",
+      "windows": 11
+    },
+    {
+      "load_hp": 0,
+      "split": "test",
+      "class_name": "inner_race",
+      "windows": 24
+    },
+    {
+      "load_hp": 0,
+      "split": "test",
+      "class_name": "rolling_element",
+      "windows": 33
+    },
+    {
+      "load_hp": 0,
+      "split": "test",
+      "class_name": "outer_race",
+      "windows": 33
+    },
+    {
+      "load_hp": 1,
+      "split": "fit",
+      "class_name": "healthy",
+      "windows": 70
+    },
+    {
+      "load_hp": 1,
+      "split": "fit",
+      "class_name": "inner_race",
+      "windows": 195
+    },
+    {
+      "load_hp": 1,
+      "split": "fit",
+      "class_name": "rolling_element",
+      "windows": 210
+    },
+    {
+      "load_hp": 1,
+      "split": "fit",
+      "class_name": "outer_race",
+      "windows": 210
+    },
+    {
+      "load_hp": 1,
+      "split": "validation",
+      "class_name": "healthy",
+      "windows": 22
+    },
+    {
+      "load_hp": 1,
+      "split": "validation",
+      "class_name": "inner_race",
+      "windows": 61
+    },
+    {
+      "load_hp": 1,
+      "split": "validation",
+      "class_name": "rolling_element",
+      "windows": 66
+    },
+    {
+      "load_hp": 1,
+      "split": "validation",
+      "class_name": "outer_race",
+      "windows": 66
+    },
+    {
+      "load_hp": 1,
+      "split": "test",
+      "class_name": "healthy",
+      "windows": 22
+    },
+    {
+      "load_hp": 1,
+      "split": "test",
+      "class_name": "inner_race",
+      "windows": 61
+    },
+    {
+      "load_hp": 1,
+      "split": "test",
+      "class_name": "rolling_element",
+      "windows": 68
+    },
+    {
+      "load_hp": 1,
+      "split": "test",
+      "class_name": "outer_race",
+      "windows": 68
+    },
+    {
+      "load_hp": 2,
+      "split": "fit",
+      "class_name": "healthy",
+      "windows": 70
+    },
+    {
+      "load_hp": 2,
+      "split": "fit",
+      "class_name": "inner_race",
+      "windows": 211
+    },
+    {
+      "load_hp": 2,
+      "split": "fit",
+      "class_name": "rolling_element",
+      "windows": 210
+    },
+    {
+      "load_hp": 2,
+      "split": "fit",
+      "class_name": "outer_race",
+      "windows": 210
+    },
+    {
+      "load_hp": 2,
+      "split": "validation",
+      "class_name": "healthy",
+      "windows": 22
+    },
+    {
+      "load_hp": 2,
+      "split": "validation",
+      "class_name": "inner_race",
+      "windows": 66
+    },
+    {
+      "load_hp": 2,
+      "split": "validation",
+      "class_name": "rolling_element",
+      "windows": 66
+    },
+    {
+      "load_hp": 2,
+      "split": "validation",
+      "class_name": "outer_race",
+      "windows": 66
+    },
+    {
+      "load_hp": 2,
+      "split": "test",
+      "class_name": "healthy",
+      "windows": 22
+    },
+    {
+      "load_hp": 2,
+      "split": "test",
+      "class_name": "inner_race",
+      "windows": 68
+    },
+    {
+      "load_hp": 2,
+      "split": "test",
+      "class_name": "rolling_element",
+      "windows": 69
+    },
+    {
+      "load_hp": 2,
+      "split": "test",
+      "class_name": "outer_race",
+      "windows": 69
+    },
+    {
+      "load_hp": 3,
+      "split": "fit",
+      "class_name": "healthy",
+      "windows": 70
+    },
+    {
+      "load_hp": 3,
+      "split": "fit",
+      "class_name": "inner_race",
+      "windows": 210
+    },
+    {
+      "load_hp": 3,
+      "split": "fit",
+      "class_name": "rolling_element",
+      "windows": 210
+    },
+    {
+      "load_hp": 3,
+      "split": "fit",
+      "class_name": "outer_race",
+      "windows": 210
+    },
+    {
+      "load_hp": 3,
+      "split": "validation",
+      "class_name": "healthy",
+      "windows": 22
+    },
+    {
+      "load_hp": 3,
+      "split": "validation",
+      "class_name": "inner_race",
+      "windows": 66
+    },
+    {
+      "load_hp": 3,
+      "split": "validation",
+      "class_name": "rolling_element",
+      "windows": 66
+    },
+    {
+      "load_hp": 3,
+      "split": "validation",
+      "class_name": "outer_race",
+      "windows": 66
+    },
+    {
+      "load_hp": 3,
+      "split": "test",
+      "class_name": "healthy",
+      "windows": 22
+    },
+    {
+      "load_hp": 3,
+      "split": "test",
+      "class_name": "inner_race",
+      "windows": 67
+    },
+    {
+      "load_hp": 3,
+      "split": "test",
+      "class_name": "rolling_element",
+      "windows": 69
+    },
+    {
+      "load_hp": 3,
+      "split": "test",
+      "class_name": "outer_race",
+      "windows": 69
+    }
+  ],
+  "raw_file_count": 40,
+  "total_windows": 3926,
+  "shortest_record": {
+    "record_id": "cwru48_174",
+    "name": "IR014_0",
+    "samples": 63788,
+    "duration_s_nominal": 1.3289166666666667,
+    "rms_raw": 0.18208934158247583,
+    "peak_raw": 1.449816,
+    "rate_status": "documented_family"
+  },
+  "quality": [
+    {
+      "record_id": "cwru48_97",
+      "name": "Normal_0",
+      "samples": 243938,
+      "duration_s_nominal": 5.082041666666667,
+      "rms_raw": 0.07376396805784112,
+      "peak_raw": 0.31125415384615385,
+      "rate_status": "assumed_nominal"
+    },
+    {
+      "record_id": "cwru48_109",
+      "name": "IR007_0",
+      "samples": 243938,
+      "duration_s_nominal": 5.082041666666667,
+      "rms_raw": 0.5879997458879141,
+      "peak_raw": 3.569452,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_174",
+      "name": "IR014_0",
+      "samples": 63788,
+      "duration_s_nominal": 1.3289166666666667,
+      "rms_raw": 0.18208934158247583,
+      "peak_raw": 1.449816,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_213",
+      "name": "IR021_0",
+      "samples": 244339,
+      "duration_s_nominal": 5.090395833333333,
+      "rms_raw": 0.5850735378419002,
+      "peak_raw": 3.0749907692307694,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_122",
+      "name": "B007_0",
+      "samples": 244739,
+      "duration_s_nominal": 5.098729166666667,
+      "rms_raw": 0.14943855577858717,
+      "peak_raw": 0.7364123076923076,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_189",
+      "name": "B014_0",
+      "samples": 249146,
+      "duration_s_nominal": 5.190541666666666,
+      "rms_raw": 0.1365857029948351,
+      "peak_raw": 1.3171975384615384,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_226",
+      "name": "B021_0",
+      "samples": 243938,
+      "duration_s_nominal": 5.082041666666667,
+      "rms_raw": 0.42717459282626163,
+      "peak_raw": 2.3796346666666666,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_135",
+      "name": "OR007@6_0",
+      "samples": 243538,
+      "duration_s_nominal": 5.073708333333333,
+      "rms_raw": 1.2579818224095562,
+      "peak_raw": 6.541282666666666,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_201",
+      "name": "OR014@6_0",
+      "samples": 245140,
+      "duration_s_nominal": 5.107083333333334,
+      "rms_raw": 0.4238845647440022,
+      "peak_raw": 1.511835692307692,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_238",
+      "name": "OR021@6_0",
+      "samples": 246342,
+      "duration_s_nominal": 5.132125,
+      "rms_raw": 0.6671654187836783,
+      "peak_raw": 7.702304,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_98",
+      "name": "Normal_1",
+      "samples": 483903,
+      "duration_s_nominal": 10.0813125,
+      "rms_raw": 0.0663520425949517,
+      "peak_raw": 0.34588430769230766,
+      "rate_status": "assumed_nominal"
+    },
+    {
+      "record_id": "cwru48_110",
+      "name": "IR007_1",
+      "samples": 486224,
+      "duration_s_nominal": 10.129666666666667,
+      "rms_raw": 0.2786911436909257,
+      "peak_raw": 1.6516080000000002,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_175",
+      "name": "IR014_1",
+      "samples": 381890,
+      "duration_s_nominal": 7.956041666666667,
+      "rms_raw": 0.26152886580365736,
+      "peak_raw": 2.9242546666666662,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_214",
+      "name": "IR021_1",
+      "samples": 485063,
+      "duration_s_nominal": 10.105479166666667,
+      "rms_raw": 0.6084737592731114,
+      "peak_raw": 3.417745846153846,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_123",
+      "name": "B007_1",
+      "samples": 487384,
+      "duration_s_nominal": 10.153833333333333,
+      "rms_raw": 0.14140160318943945,
+      "peak_raw": 0.6754966153846154,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_190",
+      "name": "B014_1",
+      "samples": 486224,
+      "duration_s_nominal": 10.129666666666667,
+      "rms_raw": 0.1479831667347273,
+      "peak_raw": 2.5953839999999997,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_227",
+      "name": "B021_1",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 0.21342483383944963,
+      "peak_raw": 2.8211058461538463,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_136",
+      "name": "OR007@6_1",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 1.0607088361988664,
+      "peak_raw": 5.363568,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_202",
+      "name": "OR014@6_1",
+      "samples": 484483,
+      "duration_s_nominal": 10.093395833333334,
+      "rms_raw": 0.13711115659297574,
+      "peak_raw": 1.3693513846153846,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_239",
+      "name": "OR021@6_1",
+      "samples": 489125,
+      "duration_s_nominal": 10.190104166666666,
+      "rms_raw": 0.6193112761843165,
+      "peak_raw": 7.477778666666667,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_99",
+      "name": "Normal_2",
+      "samples": 485063,
+      "duration_s_nominal": 10.105479166666667,
+      "rms_raw": 0.06432539607254037,
+      "peak_raw": 0.35923569230769226,
+      "rate_status": "assumed_nominal"
+    },
+    {
+      "record_id": "cwru48_111",
+      "name": "IR007_2",
+      "samples": 485643,
+      "duration_s_nominal": 10.1175625,
+      "rms_raw": 0.2806833656906014,
+      "peak_raw": 1.6964603076923077,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_176",
+      "name": "IR014_2",
+      "samples": 487964,
+      "duration_s_nominal": 10.165916666666666,
+      "rms_raw": 0.23784624578529456,
+      "peak_raw": 2.669264,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_215",
+      "name": "IR021_2",
+      "samples": 491446,
+      "duration_s_nominal": 10.238458333333334,
+      "rms_raw": 0.7630007582738119,
+      "peak_raw": 3.417954461538461,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_124",
+      "name": "B007_2",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 0.1436089832931524,
+      "peak_raw": 0.7401673846153847,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_191",
+      "name": "B014_2",
+      "samples": 487384,
+      "duration_s_nominal": 10.153833333333333,
+      "rms_raw": 0.17092656702393244,
+      "peak_raw": 3.417954461538461,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_228",
+      "name": "B021_2",
+      "samples": 487384,
+      "duration_s_nominal": 10.153833333333333,
+      "rms_raw": 0.3337097322437916,
+      "peak_raw": 3.417954461538461,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_137",
+      "name": "OR007@6_2",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 1.0209086953720226,
+      "peak_raw": 5.469153333333334,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_203",
+      "name": "OR014@6_2",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 0.146730924960789,
+      "peak_raw": 1.9004861538461537,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_240",
+      "name": "OR021@6_2",
+      "samples": 487964,
+      "duration_s_nominal": 10.165916666666666,
+      "rms_raw": 0.6158608981293349,
+      "peak_raw": 7.323365333333333,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_100",
+      "name": "Normal_3",
+      "samples": 485643,
+      "duration_s_nominal": 10.1175625,
+      "rms_raw": 0.06588386735663448,
+      "peak_raw": 0.306456,
+      "rate_status": "assumed_nominal"
+    },
+    {
+      "record_id": "cwru48_112",
+      "name": "IR007_3",
+      "samples": 485643,
+      "duration_s_nominal": 10.1175625,
+      "rms_raw": 0.2797017500319304,
+      "peak_raw": 1.6605784615384616,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_177",
+      "name": "IR014_3",
+      "samples": 485063,
+      "duration_s_nominal": 10.105479166666667,
+      "rms_raw": 0.26848280213022296,
+      "peak_raw": 2.6634213333333334,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_217",
+      "name": "IR021_3",
+      "samples": 489125,
+      "duration_s_nominal": 10.190104166666666,
+      "rms_raw": 0.4140866077565349,
+      "peak_raw": 2.1230787692307693,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_125",
+      "name": "B007_3",
+      "samples": 488545,
+      "duration_s_nominal": 10.178020833333333,
+      "rms_raw": 0.14322470099392257,
+      "peak_raw": 0.6646486153846154,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_192",
+      "name": "B014_3",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 0.1653583643826615,
+      "peak_raw": 3.026383384615385,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_229",
+      "name": "B021_3",
+      "samples": 486804,
+      "duration_s_nominal": 10.14175,
+      "rms_raw": 0.32262184089880497,
+      "peak_raw": 3.417954461538461,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_138",
+      "name": "OR007@6_3",
+      "samples": 487964,
+      "duration_s_nominal": 10.165916666666666,
+      "rms_raw": 1.005607988473048,
+      "peak_raw": 5.3852693333333335,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_204",
+      "name": "OR014@6_3",
+      "samples": 488545,
+      "duration_s_nominal": 10.178020833333333,
+      "rms_raw": 0.15162645505672517,
+      "peak_raw": 0.7347433846153846,
+      "rate_status": "documented_family"
+    },
+    {
+      "record_id": "cwru48_241",
+      "name": "OR021@6_3",
+      "samples": 489125,
+      "duration_s_nominal": 10.190104166666666,
+      "rms_raw": 0.5907324504404623,
+      "peak_raw": 7.559576,
+      "rate_status": "documented_family"
+    }
+  ],
+  "limitations": [
+    "Normal-file 48 kHz is a recorded assumption, not embedded MAT metadata.",
+    "Source and target loads may reuse physical bearings.",
+    "Clock position is preserved as @6 without interpreting the load-zone convention.",
+    "Temporal blocks share recordings and physical bearing identities.",
+    "No independent-bearing or industrial deployment validation.",
+    "Target pool includes mixed conditions; healthy-only commissioning is untested."
+  ]
+}

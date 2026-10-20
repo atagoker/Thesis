@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/EPFL-IMOS/CAT",
+  "commit": "354cf94aef4f0afd1f81d7ef645bd40ffc68d8d5",
+  "code_file": "models/CNN_1.py",
+  "license": "MIT; original notices retained in external/CAT/LICENSE",
+  "data": "real prepared CWRU source batch",
+  "batch_shape": [
+    16,
+    1,
+    1024
+  ],
+  "changed_arguments": {
+    "in_channel": 1,
+    "out_channel": 4
+  },
+  "checks": [
+    "entry point --help",
+    "GPU forward",
+    "GPU backward",
+    "optimizer update"
+  ],
+  "loss_for_software_check_only": 1.4248862266540527,
+  "status": "passed",
+  "full_CAT_training_reproduced": false
+}

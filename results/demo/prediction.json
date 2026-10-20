@@ -1,0 +1,23 @@
+{
+  "input_file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\cwru48\\138.mat",
+  "channel": "X138_DE_time",
+  "sampling_rate_hz_supplied_by_user": 48000,
+  "checkpoint": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\outputs\\pilot_v1\\seed_7\\teacher_target3.pt",
+  "checkpoint_role": "teacher_target3",
+  "window_count": 118,
+  "aggregation": "arithmetic mean of per-window probabilities",
+  "predicted_record_class": "outer_race",
+  "mean_class_probabilities": {
+    "healthy": 0.004883125890046358,
+    "inner_race": 0.007059701252728701,
+    "rolling_element": 0.010296657681465149,
+    "outer_race": 0.9777606129646301
+  },
+  "per_window_predicted_class_counts": {
+    "healthy": 0,
+    "inner_race": 0,
+    "rolling_element": 0,
+    "outer_race": 118
+  },
+  "status": "prototype demonstration; no independent evaluation labels supplied"
+}

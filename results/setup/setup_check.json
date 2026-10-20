@@ -1,0 +1,43 @@
+{
+  "checked_at_utc": "2026-10-18T22:24:16.390487+00:00",
+  "purpose": "Software smoke test with synthetic inputs, not a bearing experiment",
+  "python": "3.12.3",
+  "interpreter": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\.venv\\Scripts\\python.exe",
+  "packages": {
+    "torch": "2.13.0+cu126",
+    "torchvision": "0.28.0+cu126",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "tqdm": "4.70.1",
+    "tensorboard": "2.21.0"
+  },
+  "cuda_available": true,
+  "cuda_runtime": "12.6",
+  "device": "cuda",
+  "gpu_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "gpu_memory_gib": 6.0,
+  "input_shape": [
+    8,
+    1,
+    2048
+  ],
+  "output_shape": [
+    8,
+    4
+  ],
+  "synthetic_loss": 1.392789363861084,
+  "checks": [
+    "matrix multiplication",
+    "Conv1d forward",
+    "finite backward gradients",
+    "optimizer update",
+    "MATLAB round trip",
+    "plot export",
+    "metrics",
+    "TensorBoard event"
+  ],
+  "status": "passed"
+}

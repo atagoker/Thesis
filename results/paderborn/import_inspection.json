@@ -1,0 +1,372 @@
+{
+  "status": "passed",
+  "archive_count": 32,
+  "mat_file_count": 2560,
+  "conditions": {
+    "N09_M07_F10": 640,
+    "N15_M01_F10": 640,
+    "N15_M07_F04": 640,
+    "N15_M07_F10": 640
+  },
+  "scope": "All archive CRCs/sizes/filenames; one MATLAB vibration recording per bearing read.",
+  "not_checked": [
+    "Full numerical QA of every signal",
+    "Fault-label mapping",
+    "Model performance",
+    "Physical units of embedded time axes"
+  ],
+  "representative_recordings": [
+    {
+      "bearing_id": "K001",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K001\\N09_M07_F10_K001_1.mat",
+      "channel": "vibration_1",
+      "samples": 256823,
+      "time_axis_duration": 4.000003421789442,
+      "median_time_step": 1.5398052489068448e-05,
+      "standard_deviation": 0.36729508170785247,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "K002",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K002\\N09_M07_F10_K002_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999999572278149,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.1784520864811551,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "K003",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K003\\N09_M07_F10_K003_1.mat",
+      "channel": "vibration_1",
+      "samples": 256000,
+      "time_axis_duration": 3.9999923008453244,
+      "median_time_step": 1.5826040166366795e-05,
+      "standard_deviation": 0.337947636376383,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "K004",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K004\\N09_M07_F10_K004_1.mat",
+      "channel": "vibration_1",
+      "samples": 256002,
+      "time_axis_duration": 3.999992300973756,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.10663576685649871,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "K005",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K005\\N09_M07_F10_K005_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999994439592157,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.11400900574009888,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "K006",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\K006\\N09_M07_F10_K006_1.mat",
+      "channel": "vibration_1",
+      "samples": 256085,
+      "time_axis_duration": 3.999997861355071,
+      "median_time_step": 1.5825972473848537e-05,
+      "standard_deviation": 0.3593238935080092,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA01",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA01\\N09_M07_F10_KA01_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.9999991445493466,
+      "median_time_step": 1.5825837090366335e-05,
+      "standard_deviation": 0.22764199747746308,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA03",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA03\\N09_M07_F10_KA03_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.9999893067753556,
+      "median_time_step": 1.5825972473848537e-05,
+      "standard_deviation": 0.14390830656115017,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA04",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA04\\N09_M07_F10_KA04_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 4.0,
+      "median_time_step": 1.582590478177437e-05,
+      "standard_deviation": 0.2130652213883601,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA05",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA05\\N09_M07_F10_KA05_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999998289098693,
+      "median_time_step": 1.5825837090366335e-05,
+      "standard_deviation": 0.16658426651671107,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA06",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA06\\N09_M07_F10_KA06_1.mat",
+      "channel": "vibration_1",
+      "samples": 256094,
+      "time_axis_duration": 3.9999961504226618,
+      "median_time_step": 1.5826040166366795e-05,
+      "standard_deviation": 0.18066610259785393,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA07",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA07\\N09_M07_F10_KA07_1.mat",
+      "channel": "vibration_1",
+      "samples": 256002,
+      "time_axis_duration": 3.99999957227632,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.14951320864812612,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA08",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA08\\N09_M07_F10_KA08_1.mat",
+      "channel": "vibration_1",
+      "samples": 256000,
+      "time_axis_duration": 3.9999888790463696,
+      "median_time_step": 1.5825972473848537e-05,
+      "standard_deviation": 0.1552597886141483,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA09",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA09\\N09_M07_F10_KA09_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 4.0,
+      "median_time_step": 1.5825972473848537e-05,
+      "standard_deviation": 0.16688062840039067,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA15",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA15\\N09_M07_F10_KA15_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.9999991445562983,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.11085333053651598,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA16",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA16\\N09_M07_F10_KA16_1.mat",
+      "channel": "vibration_1",
+      "samples": 256086,
+      "time_axis_duration": 3.999988023736954,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.23549338952727075,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA22",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA22\\N09_M07_F10_KA22_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999997861381599,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.09640614442243543,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KA30",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KA30\\N09_M07_F10_KA30_1.mat",
+      "channel": "vibration_1",
+      "samples": 256082,
+      "time_axis_duration": 3.999999572272844,
+      "median_time_step": 1.582590478177437e-05,
+      "standard_deviation": 0.24762969756405154,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KB23",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KB23\\N09_M07_F10_KB23_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999999572278149,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.29044591574976925,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KB24",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KB24\\N09_M07_F10_KB24_1.mat",
+      "channel": "vibration_1",
+      "samples": 263829,
+      "time_axis_duration": 3.999992728728537,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.48270605893582225,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KB27",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KB27\\N09_M07_F10_KB27_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.9999987168289595,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.11747107354510831,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI01",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI01\\N09_M07_F10_KI01_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.9999931564503877,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.41306756312743986,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI03",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI03\\N09_M07_F10_KI03_1.mat",
+      "channel": "vibration_1",
+      "samples": 256080,
+      "time_axis_duration": 3.999987168289593,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.10943149910832899,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI04",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI04\\N09_M07_F10_KI04_1.mat",
+      "channel": "vibration_1",
+      "samples": 256087,
+      "time_axis_duration": 4.00000128317598,
+      "median_time_step": 1.582583709014429e-05,
+      "standard_deviation": 0.20835882959242416,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI05",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI05\\N09_M07_F10_KI05_1.mat",
+      "channel": "vibration_1",
+      "samples": 256081,
+      "time_axis_duration": 3.9999957227631975,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.17686856851710486,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI07",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI07\\N09_M07_F10_KI07_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.99999957227632,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.1848476146405928,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI08",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI08\\N09_M07_F10_KI08_1.mat",
+      "channel": "vibration_1",
+      "samples": 256000,
+      "time_axis_duration": 3.9999850295495305,
+      "median_time_step": 1.582590478177437e-05,
+      "standard_deviation": 0.19584516448092118,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI14",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI14\\N09_M07_F10_KI14_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.9999987168289595,
+      "median_time_step": 1.5825776168654215e-05,
+      "standard_deviation": 0.11530502400771067,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI16",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI16\\N09_M07_F10_KI16_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999999572278149,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.1684221243041869,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI17",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI17\\N09_M07_F10_KI17_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999999572278149,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.12173926821845797,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI18",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI18\\N09_M07_F10_KI18_1.mat",
+      "channel": "vibration_1",
+      "samples": 256001,
+      "time_axis_duration": 3.999998289112597,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.16169579035401693,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    },
+    {
+      "bearing_id": "KI21",
+      "file": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\data\\raw\\paderborn\\KI21\\N09_M07_F10_KI21_1.mat",
+      "channel": "vibration_1",
+      "samples": 256003,
+      "time_axis_duration": 3.9999970059470447,
+      "median_time_step": 1.5825708478356404e-05,
+      "standard_deviation": 0.14183364301608212,
+      "finite_values": true,
+      "repetitions_per_condition": 20
+    }
+  ]
+}

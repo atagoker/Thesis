@@ -1,0 +1,47 @@
+{
+  "protocol_id": "cwru48_fourclass_temporal_pilot_v1",
+  "status": "pilot, not independent-bearing validation",
+  "source_load": 0,
+  "target_loads": [
+    1,
+    2,
+    3
+  ],
+  "seeds": [
+    7,
+    17,
+    27
+  ],
+  "raw_sampling_rate_hz": 48000,
+  "processed_sampling_rate_hz": 12000,
+  "window_length": 1024,
+  "stride": 1024,
+  "raw_boundary_gap_samples": 4096,
+  "processed_edge_trim_samples": 128,
+  "split_fractions": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "normalization": "per-window z-score",
+  "batch_size": 64,
+  "source_epochs": 30,
+  "adaptation_epochs": 10,
+  "source_learning_rate": 0.001,
+  "adaptation_learning_rate": 0.0002,
+  "weight_decay": 1e-05,
+  "ema_alpha": 0.99,
+  "confidence_threshold": 0.9,
+  "target_loss_weight": 0.5,
+  "weak_noise_std": 0.01,
+  "strong_noise_std": 0.05,
+  "strong_gain_min": 0.9,
+  "strong_gain_max": 1.1,
+  "source_selection": "highest source validation macro F1; earliest tie",
+  "adapted_selection": "final epoch fixed in advance",
+  "primary_metric": "target test macro F1",
+  "source_access_during_adaptation": true,
+  "teacher_model": "custom EMA teacher; not full CAT reproduction",
+  "target_validation_usage": "unused",
+  "label_policy": "target commissioning archives contain x and IDs only; labels reside in evaluator archives"
+}

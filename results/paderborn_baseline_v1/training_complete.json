@@ -1,0 +1,48 @@
+{
+  "completed_utc": "2026-10-18T23:44:03.572653+00:00",
+  "protocol_id": "paderborn_binary_bearing_disjoint_v1",
+  "config_sha256": "58b9409b4ed225e73fa7bd45fcc0539da6387492d1220c18f06315b72269cc99",
+  "prepared_summary_sha256": "2fe70ef84d550eb159ff440512baa905a29ee2d3ba5a78adc1ad9086b68eca6a",
+  "checkpoint_sha256": {
+    "seed_17\\source_best.pt": "14f9e85dff74c57fd2b6fcc830d47dec88f000d56d325e447ecceee5e5f40071",
+    "seed_27\\source_best.pt": "8f28084934c32dbae9a89fef56cf8867eaff7260a26162840837c60ef6a20a72",
+    "seed_7\\source_best.pt": "ca120f3a8b3b0b5c2a07f17aec8565cb3a4c64bde5d3206ce422bed43d3a04e4"
+  },
+  "implementation_sha256": {
+    "thesislib/common.py": "d44ac831820604eaf605df42c56563c4fcbf87dc9e7f9f7167c13910b5904194",
+    "thesislib/paderborn.py": "33d4071f822aaa9bb42fce47f7a55b30f4785d739ec4bdb47b5a6d05961e66b7",
+    "thesislib/paderborn_ml.py": "5adce1f02f1ee9bd91a2d55788b479747c77227db12f8653c7f453e997dfdb46",
+    "scripts/prepare_paderborn.py": "c4a56fd2238e4a8ad7205460882c7e7733fdd793045487656b17dbc37f9562c5",
+    "scripts/train_paderborn_baseline.py": "dc1eb76eb867ae2db487e23f9c0646c5667f1fbdfb0c7884b1a5f34b49e0afbb"
+  },
+  "runs": [
+    {
+      "seed": 7,
+      "selected_epoch": 1,
+      "source_val_macro_f1": 0.4444444444444444,
+      "training_seconds": 9.620259800001804,
+      "updates": 1460
+    },
+    {
+      "seed": 17,
+      "selected_epoch": 1,
+      "source_val_macro_f1": 0.4444444444444444,
+      "training_seconds": 9.126537800002552,
+      "updates": 1460
+    },
+    {
+      "seed": 27,
+      "selected_epoch": 2,
+      "source_val_macro_f1": 0.6017316017316017,
+      "training_seconds": 8.994259099999908,
+      "updates": 1460
+    }
+  ],
+  "torch": "2.13.0+cu126",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "parameter_count": 15810,
+  "target_inputs_used": false,
+  "target_labels_used_for_training_or_selection": false,
+  "audit_hook_blocks_target_and_evaluator_file_access": true,
+  "target_evaluation_performed": false
+}

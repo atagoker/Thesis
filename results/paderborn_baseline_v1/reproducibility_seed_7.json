@@ -1,0 +1,8 @@
+{
+  "seed": 7,
+  "exact_checkpoint_tensor_match": true,
+  "maximum_absolute_parameter_difference": 0.0,
+  "selected_epoch_matches": true,
+  "scope": "Same installed software, GPU, data and configuration; not a cross-device guarantee.",
+  "audit_hook_blocks_target_and_evaluator_file_access": true
+}
