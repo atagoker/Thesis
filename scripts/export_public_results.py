@@ -22,7 +22,7 @@ def digest(path):
 
 def main():
     selected = []
-    for name in ["pilot_v1", "paderborn_baseline_v1", "paderborn_demo", "paderborn"]:
+    for name in ["pilot_v1", "paderborn_baseline_v1", "paderborn_commissioning_v1", "paderborn_demo", "paderborn"]:
         for path in (ROOT / "outputs" / name).rglob("*"):
             if (path.is_file() and path.suffix in {".json", ".csv", ".png", ".pt", ".npz"}
                     and not any(part.startswith("verification_replay") for part in path.parts)):

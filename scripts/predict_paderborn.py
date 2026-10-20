@@ -21,8 +21,10 @@ def main():
     parser.add_argument("--output", type=Path, default=ROOT / "outputs/paderborn_demo/prediction.json")
     args = parser.parse_args()
     checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
-    if checkpoint["role"] != "paderborn_binary_source_only" or checkpoint["classes"] != ["healthy", "faulty"]:
-        raise ValueError("Expected the two-class Paderborn baseline checkpoint, not a CWRU model.")
+    allowed_roles = {"paderborn_binary_source_only", "paderborn_binary_continued_source",
+                     "paderborn_binary_source_ema", "paderborn_binary_teacher_student"}
+    if checkpoint["role"] not in allowed_roles or checkpoint["classes"] != ["healthy", "faulty"]:
+        raise ValueError("Expected a supported two-class Paderborn baseline/control/teacher checkpoint.")
     raw, quality = read_vibration(args.file)
     x = torch.from_numpy(make_windows(raw, checkpoint["config"]))
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -34,7 +36,8 @@ def main():
     decision = int(mean[1] >= .5)
     result = {"input_file": str(args.file.resolve()), "input_sha256": sha256(args.file),
               "checkpoint": str(args.checkpoint.resolve()), "checkpoint_sha256": sha256(args.checkpoint),
-              "model_role": checkpoint["role"], "device": str(device), "vibration_channel": "vibration_1",
+              "model_role": checkpoint["role"], "adaptation_target_condition": checkpoint.get("target_condition"),
+              "device": str(device), "vibration_channel": "vibration_1",
               "window_count": len(x), "predicted_class": checkpoint["classes"][decision],
               "mean_probabilities": {label: float(value) for label, value in zip(checkpoint["classes"], mean)},
               "window_prediction_counts": {label: int(((window_probabilities[:, 1] >= .5) == i).sum())
