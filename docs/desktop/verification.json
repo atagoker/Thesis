@@ -1,0 +1,26 @@
+{
+  "native_qt_widgets": true,
+  "browser_or_server_used": false,
+  "cuda_health_passed": true,
+  "healthy_prediction": "healthy",
+  "faulty_prediction": "faulty",
+  "real_training_epochs": 10,
+  "real_training_updates": 730,
+  "live_batch_events": 161,
+  "exact_teacher_tensors_match_frozen_run": true,
+  "source_sequence_match": true,
+  "cancellation_passed": true,
+  "screenshots": [
+    "cwru_prediction.png",
+    "experiments.png",
+    "layout_final.png",
+    "overview.png",
+    "overview_compact.png",
+    "prediction.png",
+    "training_complete.png",
+    "training_live.png",
+    "vivid_overview.png",
+    "vivid_training_style.png"
+  ],
+  "training_session": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\outputs\\desktop_sessions\\20261021_231907_train_87d07634"
+}

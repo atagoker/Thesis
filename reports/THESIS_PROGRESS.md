@@ -1,6 +1,6 @@
 # Thesis implementation progress
 
-Updated: 20 October 2026.
+Updated: 22 October 2026.
 
 The project has reached a working-prototype and first-results milestone. A precise percentage of the whole thesis is not established: the implementation, final experimental study, written thesis, and defense have different remaining workloads.
 
@@ -38,6 +38,12 @@ The project has reached a working-prototype and first-results milestone. A preci
 - Adapted-model CLI inference on real healthy and faulty reduced-speed recordings.
 - A substantive [English thesis draft](../thesis/THESIS_DRAFT.md), including eight
   chapters, references and evidence/reproduction appendices.
+- AtaScope, a native Windows/Qt desktop interface with a vivid dark theme, Paderborn/CWRU
+  signal inspection and GPU inference, real batch/epoch commissioning updates,
+  saved experiment comparisons, session logging and cancellation.
+- Desktop end-to-end validation: real predictions, 730 training updates, exact
+  teacher-state/source-sequence parity and cancellation. The full unit suite now
+  passes 26 tests. See [the desktop guide](DESKTOP_UI.md).
 
 ## Current finding
 

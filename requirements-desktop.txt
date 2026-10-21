@@ -1,0 +1,3 @@
+# Native Qt Widgets desktop UI; no browser engine or web server.
+# Install into the existing thesis environment after requirements.txt.
+PySide6-Essentials==6.12.0

@@ -5,6 +5,23 @@ Working Python/PyTorch prototype for **Implementation of Label-Free Teacher–St
 Repository: [atagoker/Thesis](https://github.com/atagoker/Thesis), default branch
 `master`. This is a BSc research prototype, not a production diagnostic system.
 
+## AtaScope — native desktop UI
+
+Double-click **[Launch_AtaScope.bat](Launch_AtaScope.bat)** to open AtaScope, a
+native Windows/Qt interface with a dark background. It shows real signal plots,
+GPU predictions, live batch/epoch progress, teacher-student diagnostics and saved
+experiment comparisons. It runs locally as a desktop window; no browser or web
+server is used.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-desktop.txt
+.\.venv\Scripts\python.exe scripts\desktop_app.py
+```
+
+See [the desktop guide](reports/DESKTOP_UI.md) for controls, cancellation, session
+outputs and end-to-end verification. Interactive runs save to separate
+`outputs/desktop_sessions/` folders and preserve the frozen research evidence.
+
 ## Browse or reproduce the work
 
 - [Published results, figures and checkpoints](results/README.md) are included in
