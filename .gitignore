@@ -23,3 +23,7 @@ rar/
 .ruff_cache/
 .mypy_cache/
 *.log
+
+# Private presentation build files and chart-export staging caches.
+.presentation-build/
+.chart-data-*/

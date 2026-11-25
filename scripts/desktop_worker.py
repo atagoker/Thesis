@@ -3,7 +3,6 @@
 import argparse
 from datetime import datetime, timezone
 from fractions import Fraction
-import json
 import os
 from pathlib import Path
 import sys
@@ -11,7 +10,8 @@ import traceback
 
 os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from thesisui.data import ROOT, encode_event, source_checkpoint
+from thesisui.data import ROOT, TARGETS, encode_event, source_checkpoint, write_job_status
+from thesisui.training import TrainingCancelled
 
 SESSION = None
 
@@ -42,6 +42,15 @@ def health():
          vram_total_mb=round(torch.cuda.get_device_properties(0).total_memory / 1024**2) if torch.cuda.is_available() else 0)
 
 
+def check_cancelled():
+    if SESSION and (SESSION / "cancel.flag").exists():
+        raise TrainingCancelled("The task was stopped before its results were committed.")
+
+
+def compute_device(torch, preference):
+    return torch.device("cuda" if preference == "auto" and torch.cuda.is_available() else "cpu")
+
+
 def prepare_signal(args, checkpoint=None):
     import numpy as np
     from scipy.io import loadmat
@@ -51,21 +60,32 @@ def prepare_signal(args, checkpoint=None):
     emit("stage", message="Reading the MATLAB vibration recording…")
     if args.dataset == "paderborn":
         cfg = checkpoint["config"] if checkpoint else read_json(ROOT / "configs/paderborn_baseline_v1.json")
-        raw, quality = read_vibration(args.file)
+        try:
+            raw, quality = read_vibration(args.file)
+        except Exception as error:
+            raise ValueError("Cannot read a valid Paderborn vibration_1 recording. Check the file and dataset selection.") from error
         x = make_windows(raw, cfg)
         original_fs, processed_fs, channel = 64000, cfg["processed_fs_hz"], "vibration_1"
     else:
         cfg = checkpoint["config"] if checkpoint else read_json(ROOT / "configs/pilot_v1.json")
-        data = loadmat(args.file)
+        try:
+            data = loadmat(args.file)
+        except Exception as error:
+            raise ValueError("Cannot read this MATLAB recording. Choose an intact .mat file supported by SciPy.") from error
         if args.channel not in data:
             keys = [k for k in data if not k.startswith("__")]
             raise ValueError(f"Channel '{args.channel}' was not found. Available keys: {', '.join(keys)}")
-        raw = np.asarray(data[args.channel], dtype=np.float64).reshape(-1)
+        channel_data = np.asarray(data[args.channel]).squeeze()
+        if channel_data.ndim != 1 or channel_data.dtype.kind not in "fiu":
+            raise ValueError("The selected MATLAB channel must be a one-dimensional, real numeric vibration signal.")
+        raw = channel_data.astype(np.float64)
         if not np.isfinite(raw).all() or raw.size < 8192 or raw.std() < 1e-10:
             raise ValueError("Signal is invalid, constant or too short.")
         original_fs, processed_fs, channel = args.sampling_rate, cfg["processed_sampling_rate_hz"], args.channel
         if original_fs <= 0:
             raise ValueError("A positive original sampling rate is required.")
+        if len(raw) / original_fs > 600:
+            raise ValueError("Recording exceeds the desktop CWRU limit of 10 minutes. Check the original sample rate.")
         ratio = Fraction(processed_fs, original_fs)
         processed = resample_poly(raw, ratio.numerator, ratio.denominator)
         trim, length = cfg["processed_edge_trim_samples"], cfg["window_length"]
@@ -77,6 +97,7 @@ def prepare_signal(args, checkpoint=None):
         x = normalize_windows(np.stack(windows))[:, None, :]
         quality = {"samples": len(raw), "rms_recorded_units": float(np.sqrt(np.mean(raw**2))),
                    "nominal_fs_hz": original_fs, "sampling_rate_policy": "explicit rate supplied by the user"}
+    check_cancelled()
     # Peak-preserving envelope: each bin supplies its minimum and maximum.
     bins = min(2500, len(raw) // 2)
     width = len(raw) // bins
@@ -108,7 +129,12 @@ def predict(args):
     import torch
     from thesislib.common import BearingCNN, sha256, write_json
     torch.set_num_threads(4)
-    checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
+    try:
+        checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
+    except Exception as error:
+        raise ValueError("This checkpoint could not be read safely. Choose a trusted AtaScope project model.") from error
+    if not isinstance(checkpoint, dict) or not all(key in checkpoint for key in ("role", "config", "state_dict", "classes")):
+        raise ValueError("This file is not a compatible AtaScope checkpoint.")
     classes = checkpoint.get("classes", [])
     if args.dataset == "paderborn":
         roles = {"paderborn_binary_source_only", "paderborn_binary_continued_source", "paderborn_binary_source_ema",
@@ -118,23 +144,31 @@ def predict(args):
     elif classes != ["healthy", "inner_race", "rolling_element", "outer_race"]:
         raise ValueError("Choose a four-class CWRU checkpoint.")
     x, signal_info = prepare_signal(args, checkpoint)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = compute_device(torch, args.device)
     model = BearingCNN(num_classes=len(classes)).to(device).eval()
-    model.load_state_dict(checkpoint["state_dict"])
+    try:
+        model.load_state_dict(checkpoint["state_dict"])
+    except (RuntimeError, TypeError) as error:
+        raise ValueError("Checkpoint weights do not match the AtaScope model architecture.") from error
     emit("stage", message=f"Predicting {len(x)} windows on {device}…")
     result = []
+    interval = max(1, (len(x) + 319) // 320)
     with torch.no_grad():
         for start in range(0, len(x), 4):
+            check_cancelled()
             result.append(model(torch.from_numpy(x[start:start+4]).to(device)).softmax(1).cpu().numpy())
-            p = np.concatenate(result)
-            emit("prediction_progress", completed=len(p), total=len(x), faulty_scores=(1 - p[:, 0]).tolist())
+            if (start // 4) % interval == 0 or start + 4 >= len(x):
+                p = np.concatenate(result)
+                emit("prediction_progress", completed=len(p), total=len(x), faulty_scores=(1 - p[:, 0]).tolist())
     p = np.concatenate(result)
     mean = p.mean(0)
     decision = int(mean[1] >= .5) if len(classes) == 2 else int(mean.argmax())
     report = {"input_file": str(args.file.resolve()), "input_sha256": sha256(args.file),
               "checkpoint": str(args.checkpoint.resolve()), "checkpoint_sha256": sha256(args.checkpoint),
               "model_role": checkpoint["role"], "classes": classes, "dataset": args.dataset,
+              "model_seed": checkpoint.get("seed"),
               "adaptation_target_condition": checkpoint.get("target_condition"),
+              "recording_condition_hint": next((code for code in TARGETS if args.file.stem.startswith(code + "_")), None),
               "predicted_class": classes[decision], "mean_probabilities": {c: float(v) for c, v in zip(classes, mean)},
               "mean_faulty_score": float(1 - mean[0]), "window_count": len(x), "device": str(device),
               "input_quality": signal_info["quality"], "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -155,7 +189,9 @@ def train(args):
     original = read_json(CONFIG_PATH)
     baseline, _, prepared = validate_provenance(original)
     cfg = {**original, "adaptation_epochs": args.epochs}
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = compute_device(torch, args.device)
+    if device.type == "cpu":
+        torch.set_num_threads(4)
     path = source_checkpoint(args.seed)
     checkpoint = torch.load(path, map_location=device, weights_only=True)
     write_json(SESSION / "run_manifest.json", {"kind": "interactive desktop commissioning",
@@ -179,6 +215,8 @@ def train(args):
         result = train_run(cfg, args.seed, checkpoint["state_dict"], (x, y), validation, target,
                            original["target_conditions"].index(args.target), verbose=False)
     guard.enabled = False
+    check_cancelled()
+    emit("stage", message="Saving teacher, student and training history…")
     for network, role in [("teacher", "paderborn_binary_teacher_student"), ("student", "paderborn_binary_student_diagnostic")]:
         torch.save({"state_dict": result[network], "classes": cfg["classes"], "config": baseline,
                     "commissioning_config": cfg, "seed": args.seed, "target_condition": args.target,
@@ -209,6 +247,7 @@ def main():
     parser.add_argument("--seed", type=int, choices=[7, 17, 27], default=7)
     parser.add_argument("--target", choices=["N09_M07_F10", "N15_M01_F10", "N15_M07_F04"], default="N09_M07_F10")
     parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--device", choices=["auto", "cpu"], default="auto")
     args = parser.parse_args()
     if not 1 <= args.epochs <= 30:
         parser.error("Epochs must be between 1 and 30.")
@@ -220,19 +259,19 @@ def main():
         parser.error("Choose an existing model checkpoint.")
     if args.session is not None:
         SESSION = session_path(args.session)
-        (SESSION / "job.json").write_text(json.dumps({"action": args.action, "status": "started"}) + "\n", encoding="utf-8")
+        write_job_status(SESSION, args.action, "started")
     try:
         emit("stage", message="Starting the local Python worker…")
         {"health": health, "inspect": lambda: inspect_signal(args), "predict": lambda: predict(args), "train": lambda: train(args)}[args.action]()
-        emit("done")
+        check_cancelled()
         if SESSION:
-            (SESSION / "job.json").write_text(json.dumps({"action": args.action, "status": "complete"}) + "\n", encoding="utf-8")
+            write_job_status(SESSION, args.action, "complete")
+        emit("done")
     except Exception as error:
-        from thesisui.training import TrainingCancelled
         cancelled = isinstance(error, TrainingCancelled)
         emit("cancelled" if cancelled else "error", message=str(error), detail=traceback.format_exc())
         if SESSION:
-            (SESSION / "job.json").write_text(json.dumps({"action": args.action, "status": "cancelled" if cancelled else "failed"}) + "\n", encoding="utf-8")
+            write_job_status(SESSION, args.action, "cancelled" if cancelled else "failed")
         raise SystemExit(2 if cancelled else 1)
 
 

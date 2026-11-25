@@ -13,6 +13,7 @@ from thesisui.widgets import Metric, button, label, panel
 
 class TrainingPage(QWidget):
     run_requested = Signal(str, list)
+    results_requested = Signal()
 
     def __init__(self):
         super().__init__()
@@ -39,10 +40,18 @@ class TrainingPage(QWidget):
         row.addWidget(self.epochs)
         row.addWidget(self.start)
         body.addLayout(row)
-        body.addWidget(label("EMA 0.99  ·  confidence ≥ 0.90  ·  source + target objective  ·  fixed final epoch", "Subtitle", True))
+        self.plan = label("", "Subtitle", True)
+        body.addWidget(self.plan)
+        body.addWidget(label("Prepared source model · EMA 0.99 · confidence cutoff 0.90 · no target reference labels", "Subtitle", True))
         layout.addWidget(controls)
+        phase_row = QHBoxLayout()
         self.phase = label("Ready · models and prepared data will be verified when you start", "Subtitle", True)
-        layout.addWidget(self.phase)
+        phase_row.addWidget(self.phase, 1)
+        self.open_result = button("Saved result")
+        self.open_result.setEnabled(False)
+        self.open_result.clicked.connect(self.results_requested)
+        phase_row.addWidget(self.open_result)
+        layout.addLayout(phase_row)
         self.progress = QProgressBar()
         self.progress.setRange(0, 1000)
         self.progress.setValue(0)
@@ -67,10 +76,21 @@ class TrainingPage(QWidget):
         self.explanation = label("Interactive runs save in outputs/desktop_sessions. Your published experiments remain available on the Experiments screen.", "Subtitle", True)
         layout.addWidget(self.explanation)
         self.start.clicked.connect(self.request)
+        self.target.currentIndexChanged.connect(self.update_plan)
+        self.seed.currentIndexChanged.connect(self.update_plan)
+        self.epochs.valueChanged.connect(self.update_plan)
+        self.update_plan()
+
+    def update_plan(self, *_):
+        count = self.epochs.value()
+        kind = "Saved study's epoch budget" if count == 10 else "Custom epoch budget"
+        self.plan.setText(f"{self.target.currentText()} · seed {self.seed.currentData()} · {count} epochs. "
+                          f"{kind}; a separate run without target evaluation.")
 
     def request(self):
         self.rows = []
         self.last_checkpoint = None
+        self.open_result.setEnabled(False)
         self.progress.setValue(0)
         self.loss.placeholder("Waiting for the first completed epoch…")
         self.acceptance.placeholder("Waiting for the first completed epoch…")
@@ -99,15 +119,16 @@ class TrainingPage(QWidget):
             epochs = [r["epoch"] for r in self.rows]
             self.source_metric.update_value(f"{item['source_loss']:.4f}", "Mean over completed epoch")
             self.acceptance_metric.update_value(f"{item['acceptance']:.1%}",
-                                                f"{item['accepted']:,} / {item['target_exposures']:,} exposures")
-            self.validation_metric.update_value(f"{item['source_val_teacher_macro_f1']:.1%}", "Source bearing validation; no target truth")
+                                                f"Epoch {item['epoch']} · {item['accepted']:,} / {item['target_exposures']:,} exposures")
+            self.validation_metric.update_value(f"{item['source_val_teacher_macro_f1']:.1%}",
+                                                f"Epoch {item['epoch']} · source bearings only")
             self.loss.series([("Source", epochs, [r["source_loss"] for r in self.rows], t.CYAN),
                               ("Target", epochs, [r["target_loss_full_batch"] for r in self.rows], t.PURPLE)])
             self.acceptance.series([("Accepted", epochs, [r["acceptance"] for r in self.rows], t.GREEN),
                                     ("Confidence", epochs, [r["mean_confidence"] for r in self.rows], t.PURPLE),
                                     ("Disagreement", epochs, [r["teacher_student_disagreement"] for r in self.rows], t.AMBER)],
                                    ylim=(-.03, 1.04), percent=True)
-            self.explanation.setText(f"Accepted pseudo-labels this epoch: healthy {item['accepted_healthy']:,} · faulty {item['accepted_faulty']:,}. "
+            self.explanation.setText(f"Accepted at completed epoch {item['epoch']}: healthy {item['accepted_healthy']:,} · faulty {item['accepted_faulty']:,}. "
                                      "These are model guesses, not reference labels.")
         elif event == "result" and item.get("kind") == "train":
             self.progress.setValue(1000)
@@ -115,7 +136,7 @@ class TrainingPage(QWidget):
             self.phase.setText(f"Complete · {item['updates']} updates · teacher checkpoint saved")
             self.explanation.setText("Saved: " + item["checkpoint"])
         elif event in {"error", "cancelled"}:
-            self.phase.setText(item["message"])
+            self.phase.setText(("Cancelled · " if event == "cancelled" else "Failed · ") + item["message"])
 
     def set_busy(self, busy):
         for widget in [self.start, self.target, self.seed, self.epochs]:
@@ -174,5 +195,11 @@ class ExperimentsPage(QWidget):
                     item.setForeground(QColor(t.PURPLE))
                 self.table.setItem(row_index, col, item)
             self.table.setRowHeight(row_index, 38)
-        self.finding.setText("Mean across all targets: teacher–student 66.38% vs source EMA 66.84%. "
-                             "The current method does not demonstrate an average benefit beyond the matched EMA control.")
+        means = data.get("overall_target_macro_f1", {})
+        teacher, ema = means.get("teacher_student"), means.get("source_ema")
+        if teacher is not None and ema is not None:
+            comparison = ("Teacher–student was below the matched EMA control in this saved study." if teacher < ema else
+                          "These are exploratory results; compare individual conditions before drawing a conclusion.")
+            self.finding.setText(f"Mean across all targets: teacher–student {teacher:.2%} vs source EMA {ema:.2%}. {comparison}")
+        else:
+            self.finding.setText("No saved study results found. See the setup and data restoration guide.")

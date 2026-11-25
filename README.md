@@ -5,21 +5,23 @@ Working Python/PyTorch prototype for **Implementation of Label-Free Teacher–St
 Repository: [atagoker/Thesis](https://github.com/atagoker/Thesis), default branch
 `master`. This is a BSc research prototype, not a production diagnostic system.
 
-## AtaScope — native desktop UI
+## AtaScope 1.0 — native desktop app
 
 Double-click **[Launch_AtaScope.bat](Launch_AtaScope.bat)** to open AtaScope, a
 native Windows/Qt interface with a dark background. It shows real signal plots,
-GPU predictions, live batch/epoch progress, teacher-student diagnostics and saved
-experiment comparisons. It runs locally as a desktop window; no browser or web
-server is used.
+CPU/CUDA predictions, live batch/epoch progress, teacher–student diagnostics and
+saved experiment comparisons. Saved sessions persist across restarts; you can
+reuse a completed teacher, export a report ZIP, or save the visible view as PNG.
+It runs as a Windows desktop window; no browser or web server is used.
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-desktop.txt
 .\.venv\Scripts\python.exe scripts\desktop_app.py
 ```
 
-See [the desktop guide](reports/DESKTOP_UI.md) for controls, cancellation, session
-outputs and end-to-end verification. Interactive runs save to separate
+On an already prepared computer, start on **Overview → Healthy demo**. See
+[the desktop guide](reports/DESKTOP_UI.md) for setup, the teacher demonstration,
+controls, cancellation, reporting and end-to-end verification. Interactive runs save to separate
 `outputs/desktop_sessions/` folders and preserve the frozen research evidence.
 
 ## Browse or reproduce the work

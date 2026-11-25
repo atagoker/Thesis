@@ -4,6 +4,7 @@ import csv
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,11 +30,47 @@ def evidence_root():
 
 
 def summary():
-    return read_json(evidence_root() / "evaluation.json", {})
+    for folder in (evidence_root(), ROOT / "results/paderborn_commissioning_v1"):
+        value = optional_metadata(folder / "evaluation.json")
+        if value:
+            return value
+    return {}
 
 
 def dataset_summary():
-    return read_json(ROOT / "data/manifests/paderborn_v1_summary.json", {})
+    return optional_metadata(ROOT / "data/manifests/paderborn_v1_summary.json")
+
+
+def optional_metadata(path):
+    try:
+        record = read_json(path, {})
+        return record if isinstance(record, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def write_job_status(session, action, status):
+    """Commit session state after all result files are closed."""
+    with NamedTemporaryFile(mode="w", encoding="utf-8", dir=session, delete=False) as stream:
+        tmp = Path(stream.name)
+        json.dump({"action": action, "status": status,
+                   "updated_utc": datetime.now(timezone.utc).isoformat()}, stream)
+    try:
+        tmp.replace(session / "job.json")
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+def training_requirements(target, seed, root=ROOT):
+    """Fast existence check only. The worker still verifies archived hashes."""
+    seeds = (seed, *(other for other in (7, 17, 27) if other != seed))
+    names = ["outputs/paderborn_baseline_v1/training_complete.json",
+             *(f"outputs/paderborn_baseline_v1/seed_{value}/source_best.pt" for value in seeds),
+             "data/manifests/paderborn_v1_summary.json",
+             "data/processed/paderborn_v1/source_fit.npz",
+             "data/processed/paderborn_v1/source_validation.npz",
+             f"data/processed/paderborn_v1/target_adaptation_{target}_unlabeled.npz"]
+    return [name for name in names if not (root / name).is_file()]
 
 
 def source_checkpoint(seed):

@@ -1,6 +1,6 @@
 # Thesis implementation progress
 
-Updated: 22 October 2026.
+Updated: 25 November 2026.
 
 The project has reached a working-prototype and first-results milestone. A precise percentage of the whole thesis is not established: the implementation, final experimental study, written thesis, and defense have different remaining workloads.
 
@@ -43,7 +43,17 @@ The project has reached a working-prototype and first-results milestone. A preci
   saved experiment comparisons, session logging and cancellation.
 - Desktop end-to-end validation: real predictions, 730 training updates, exact
   teacher-state/source-sequence parity and cancellation. The full unit suite now
-  passes 26 tests. See [the desktop guide](DESKTOP_UI.md).
+  passes 32 tests. Six added PNG export checks cover all pages, repeated saves,
+  busy-task availability, write errors and opening the export folder. A real
+  commissioning replay also verifies exports during training without changing
+  the teacher state. See [the desktop guide](DESKTOP_UI.md).
+- One-click **Save PNG** and **Open PNG folder** controls on every AtaScope page,
+  producing uniquely named 2x-resolution images for presentation use.
+- AtaScope 1.0 completes the local desktop workflow: guided demos, compact graph
+  tabs, CPU/CUDA prediction, persistent sessions and preferences, completed-teacher
+  reuse and portable summaries with JSON/CSV evidence. It starts from prepared
+  source checkpoints and does not perform live target-label evaluation. This
+  desktop release is separate from final thesis completion.
 
 ## Current finding
 

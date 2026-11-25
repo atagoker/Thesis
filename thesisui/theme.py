@@ -44,7 +44,7 @@ QPushButton#Primary:hover {{ background: #74f3ff; border-color: #74f3ff; }}
 QPushButton#Primary:disabled {{ background: #24434d; border-color: #24434d; color: #708f98; }}
 QPushButton#Danger {{ color: {RED}; background: {ERROR_BG}; border-color: #92304f; }}
 QPushButton#Danger:disabled {{ color: #6d5360; background: #19131b; border-color: #342630; }}
-QPushButton#Nav {{ text-align: left; background: transparent; border: none; padding: 13px 14px; color: {MUTED}; font-weight: 500; }}
+QPushButton#Nav {{ text-align: left; background: transparent; border: none; padding: 9px 14px; color: {MUTED}; font-weight: 500; }}
 QPushButton#Nav:hover {{ background: #17263e; color: {TEXT}; }}
 QPushButton#Nav:checked {{ background: {ACTIVE_BG}; color: {CYAN}; border-left: 3px solid {CYAN}; padding-left: 11px; }}
 QPushButton#Nav {{ qproperty-autoDefault: false; }}

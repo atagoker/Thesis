@@ -1,4 +1,6 @@
 {
+  "release": "1.0.0",
+  "verified_on": "2026-11-25",
   "native_qt_widgets": true,
   "browser_or_server_used": false,
   "cuda_health_passed": true,
@@ -10,17 +12,20 @@
   "exact_teacher_tensors_match_frozen_run": true,
   "source_sequence_match": true,
   "cancellation_passed": true,
-  "screenshots": [
-    "cwru_prediction.png",
-    "experiments.png",
-    "layout_final.png",
-    "overview.png",
-    "overview_compact.png",
-    "prediction.png",
-    "training_complete.png",
-    "training_live.png",
-    "vivid_overview.png",
-    "vivid_training_style.png"
-  ],
-  "training_session": "C:\\Users\\TUF Gaming\\Documents\\Thesis\\outputs\\desktop_sessions\\20261021_231907_train_87d07634"
+  "close_during_training_passed": true,
+  "cpu_prediction_passed": true,
+  "cwru_quick_prediction_passed": true,
+  "compact_window_scores_fit": true,
+  "quick_check_qt_scale_factor": 1.25,
+  "incompatible_checkpoint_rejected": true,
+  "malformed_recording_rejected": true,
+  "session_reopened_and_teacher_selected": true,
+  "report_exports_verified": true,
+  "one_click_png_export_passed": true,
+  "png_export_scale": 2,
+  "png_exported_during_training": true,
+  "png_export_tests": 6,
+  "full_unit_test_count": 40,
+  "published_screenshots": ["overview.png", "prediction.png", "training_live.png"],
+  "reproduce": ["scripts/check_desktop_ui.py --quick", "scripts/check_desktop_ui.py"]
 }

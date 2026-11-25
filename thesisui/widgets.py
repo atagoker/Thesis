@@ -9,6 +9,7 @@ from thesisui import theme as t
 
 def label(text, name=None, wrap=False):
     widget = QLabel(text)
+    widget.setTextFormat(Qt.TextFormat.PlainText)
     if name:
         widget.setObjectName(name)
     widget.setWordWrap(wrap)

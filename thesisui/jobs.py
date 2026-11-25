@@ -1,12 +1,11 @@
 """Responsive Qt process controller for one active local job at a time."""
 
-from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
 from PySide6.QtCore import QObject, QProcess, QProcessEnvironment, QTimer, Signal
 
-from thesisui.data import ROOT, decode_event, make_session
+from thesisui.data import ROOT, decode_event, make_session, write_job_status
 
 
 class JobController(QObject):
@@ -28,7 +27,7 @@ class JobController(QObject):
         self.process.readyReadStandardError.connect(self.read_stderr)
         self.process.finished.connect(self.finished)
         self.process.errorOccurred.connect(self.failed_to_start)
-        self.buffer = ""
+        self.buffer = b""
         self.session = None
         self.action = ""
         self.busy = False
@@ -45,7 +44,7 @@ class JobController(QObject):
         if self.session:
             args.extend(["--session", str(self.session)])
         args.extend(str(a) for a in arguments)
-        self.buffer = ""
+        self.buffer = b""
         self.had_error = self.cancel_requested = self.received_done = False
         self.busy = True
         self.busy_changed.emit(True)
@@ -56,11 +55,11 @@ class JobController(QObject):
         self.process.start(str(python), args)
 
     def read_stdout(self):
-        self.buffer += bytes(self.process.readAllStandardOutput()).decode("utf-8", errors="replace")
-        while "\n" in self.buffer:
-            line, self.buffer = self.buffer.split("\n", 1)
+        self.buffer += bytes(self.process.readAllStandardOutput())
+        while b"\n" in self.buffer:
+            line, self.buffer = self.buffer.split(b"\n", 1)
             if line.strip():
-                self.deliver(line)
+                self.deliver(line.decode("utf-8", errors="replace"))
 
     def deliver(self, line):
         item = decode_event(line)
@@ -84,36 +83,45 @@ class JobController(QObject):
         if error == QProcess.ProcessError.FailedToStart:
             self.had_error = True
             self.log.emit("Could not start the Python worker: " + self.process.errorString())
+            self.record_failure("failed")
             self.busy = False
             self.busy_changed.emit(False)
             self.completed.emit(False, "Could not start Python worker")
+
+    def record_failure(self, status):
+        if self.session:
+            try:
+                write_job_status(self.session, self.action, status)
+            except OSError as error:
+                self.log.emit(f"Could not record session status: {error}")
 
     def finished(self, exit_code, exit_status):
         self.read_stdout()
         self.read_stderr()
         if self.buffer.strip():
-            self.deliver(self.buffer)
-        self.buffer = ""
-        success = exit_code == 0 and self.received_done and not self.had_error and not self.cancel_requested
-        message = "Stopped by user" if self.cancel_requested else ("Complete" if success else f"Task failed (exit {exit_code})")
-        if self.session and not success:
-            # Force-stopped processes may not have reached their exception handler.
-            import json
-            (self.session / "job.json").write_text(json.dumps({"action": self.action,
-                "status": "cancelled" if self.cancel_requested else "failed",
-                "finished_utc": datetime.now(timezone.utc).isoformat()}) + "\n", encoding="utf-8")
+            self.deliver(self.buffer.decode("utf-8", errors="replace"))
+        self.buffer = b""
+        success = (exit_status == QProcess.ExitStatus.NormalExit and exit_code == 0
+                   and self.received_done and not self.had_error)
+        message = "Complete" if success else ("Stopped by user" if self.cancel_requested else f"Task failed (exit {exit_code})")
+        if not success:
+            self.record_failure("cancelled" if self.cancel_requested else "failed")
         self.busy = False
         self.busy_changed.emit(False)
         self.log.emit(message)
         self.completed.emit(success, message)
 
     def cancel(self):
-        if not self.busy:
+        if not self.busy or self.cancel_requested or self.received_done:
             return
         self.cancel_requested = True
         self.log.emit("Stop requested…")
         if self.session:
-            (self.session / "cancel.flag").touch()
+            try:
+                (self.session / "cancel.flag").touch()
+            except OSError as error:
+                self.log.emit(f"Graceful stop unavailable: {error}")
+                self.process.terminate()
         if self.action != "train":
             self.process.terminate()
         # If imports or a CUDA operation delay graceful cancellation, stop this job only.
